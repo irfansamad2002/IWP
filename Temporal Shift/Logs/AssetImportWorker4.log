@@ -1,0 +1,297 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.10f1 (ff3792e53c62) revision 16725906'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22621) 64bit Core' Language: 'en' Physical Memory: 16230 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Program Files\Unity\Hub\Editor\2022.3.10f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+D:/NYP/IWP/Temporal Shift
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+53730
+Successfully changed project path to: D:/NYP/IWP/Temporal Shift
+D:/NYP/IWP/Temporal Shift
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [6416] Host "[IP] 192.168.50.60 [Port] 0 [Flags] 2 [Guid] 460419506 [EditorId] 460419506 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-GG97DJ5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [6416] Host "[IP] 192.168.50.60 [Port] 0 [Flags] 2 [Guid] 460419506 [EditorId] 460419506 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-GG97DJ5) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 7.84 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.10f1 (ff3792e53c62)
+[Subsystems] Discovering subsystems at path D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/NYP/IWP/Temporal Shift/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c8c)
+    Vendor:   NVIDIA
+    VRAM:     4017 MB
+    Driver:   31.0.15.3758
+Initialize mono
+Mono path[0] = 'D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56844
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: D:/Program Files/Unity/Hub/Editor/2022.3.10f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.007011 seconds.
+- Loaded All Assemblies, in  0.406 seconds
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.262 seconds
+Domain Reload Profiling: 667ms
+	BeginReloadAssembly (117ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (55ms)
+	LoadAllAssembliesAndSetupDomain (175ms)
+		LoadAssemblies (117ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (173ms)
+			TypeCache.Refresh (172ms)
+				TypeCache.ScanAssembly (157ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (262ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (196ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (12ms)
+			SetLoadedEditorAssemblies (5ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (129ms)
+			ProcessInitializeOnLoadMethodAttributes (47ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.759 seconds
+Refreshing native plugins compatible for Editor in 2.07 ms, found 3 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.703 seconds
+Domain Reload Profiling: 1462ms
+	BeginReloadAssembly (257ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (35ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (417ms)
+		LoadAssemblies (287ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (216ms)
+			TypeCache.Refresh (178ms)
+				TypeCache.ScanAssembly (163ms)
+			ScanForSourceGeneratedMonoScriptInfo (25ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (703ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (536ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (3ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (67ms)
+			ProcessInitializeOnLoadAttributes (392ms)
+			ProcessInitializeOnLoadMethodAttributes (62ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.80 seconds
+Refreshing native plugins compatible for Editor in 2.15 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5529 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 108 unused Assets / (2.5 MB). Loaded Objects now: 5983.
+Memory consumption went from 218.4 MB to 215.9 MB.
+Total: 5.279000 ms (FindLiveObjects: 0.408500 ms CreateObjectMapping: 0.350500 ms MarkObjects: 3.307500 ms  DeleteObjects: 1.211500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: a3ef5dd2817f97addfee359851a9dba5 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/LightFlicker.cs: 4a2c69873a06b0d5b0b3d5640e1e7b49 -> 10986106b750453c905cb11118ec8f88
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/PlayRandomSound.cs: 628202655b40b03ab364d3e40d80822d -> 29a7bd3cdf0927d222f2cd2ff80b15bf
+========================================================================
+Received Import Request.
+  Time since last request: 57140.176144 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Foliage
+  artifactKey: Guid(128f925caa378944986c29e3ce899d09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Foliage using Guid(128f925caa378944986c29e3ce899d09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab49e018023c89d5e7f7508c57612050') in 0.003304 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.015327 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Foliage/sky___soil_AlbedoTransparency.tga
+  artifactKey: Guid(001b5c2396941cf439b97c0de6df037c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Foliage/sky___soil_AlbedoTransparency.tga using Guid(001b5c2396941cf439b97c0de6df037c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cff6b66bb5892d2ff93991269382a95') in 0.060570 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.595070 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Foliage/Materials
+  artifactKey: Guid(1f43c4e976dde0642b2cb1062b15bc62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Foliage/Materials using Guid(1f43c4e976dde0642b2cb1062b15bc62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9404dcda9732839540621c920430e14') in 0.000585 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.034305 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Foliage/Materials/leaves_DiffuseMap.mat
+  artifactKey: Guid(6310e17c21d411748983e772b06cb717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Foliage/Materials/leaves_DiffuseMap.mat using Guid(6310e17c21d411748983e772b06cb717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a87d60f6b77cb31fab153094f00bf091') in 0.269298 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 55.494951 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/Materials/_props.mat
+  artifactKey: Guid(945a37daea5c32543a45f65de134a06c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/Materials/_props.mat using Guid(945a37daea5c32543a45f65de134a06c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1fece7604ace7ab87a3b50de4d997a5') in 0.048346 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 6
+========================================================================
+Received Import Request.
+  Time since last request: 101.715230 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/AD_B.FBX
+  artifactKey: Guid(7684ef4acf4f4964182a38e4bcef0b06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/AD_B.FBX using Guid(7684ef4acf4f4964182a38e4bcef0b06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '483a645b14f83ecd880d6829447598e1') in 0.143818 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/rotor_blade.FBX
+  artifactKey: Guid(bdfb95b0813e88a4480516b45a3ddaa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/rotor_blade.FBX using Guid(bdfb95b0813e88a4480516b45a3ddaa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '904bdc0239ffb851477064731c79514c') in 0.036715 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/Bench.FBX
+  artifactKey: Guid(de2ad1c779f548f4f8c16176122ea7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/Bench.FBX using Guid(de2ad1c779f548f4f8c16176122ea7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00fc96cac266dc74a61872f29441476b') in 0.055787 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/Ads.tga
+  artifactKey: Guid(df11990dcb6c2ae4c8e54ba3bce29e14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/Ads.tga using Guid(df11990dcb6c2ae4c8e54ba3bce29e14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f3aee5d00cc1fd7afb7cbe550e050f1') in 0.045908 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/sky__props_MetallicSmoothness.tga
+  artifactKey: Guid(7cd1ec141afbb154e85b80ad4c658a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/sky__props_MetallicSmoothness.tga using Guid(7cd1ec141afbb154e85b80ad4c658a33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20e1de3f565c27c7f5ef8352b56c73e2') in 0.033630 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/Bin.FBX
+  artifactKey: Guid(b11cabdb487b9a64c9e11612f3fa005d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/Bin.FBX using Guid(b11cabdb487b9a64c9e11612f3fa005d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd91e5072486d02bba6f1cb3028eb5101') in 0.043298 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/sky__props_AlbedoTransparency.tga
+  artifactKey: Guid(dadd829ba8b07a8478b611342eb7efff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/sky__props_AlbedoTransparency.tga using Guid(dadd829ba8b07a8478b611342eb7efff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af5475b4ac6b2eb86f4d52cae7c2eb2b') in 0.028973 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/DownloadedAssets/SKY city lite/Props/Sign_arrow.FBX
+  artifactKey: Guid(cb9bbea6a07fb17409dbf8ea7c840af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DownloadedAssets/SKY city lite/Props/Sign_arrow.FBX using Guid(cb9bbea6a07fb17409dbf8ea7c840af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1db7cac659db41981afe15e96cae4e5f') in 0.046843 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 11
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

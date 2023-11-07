@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<Vector2> MoveEvent;
     public event Action JumpEvent;
     public event Action<bool> AbilityEvent;
+    public event Action<bool> RewindEvent;
     public event Action<bool> InteractEvent;
     public event Action<bool> Weapon1Event;
     public event Action<bool> Weapon2Event;
@@ -19,6 +20,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public Vector2 AimPosition { get; private set; }
 
     public bool JumpState { get; private set; }
+
+
 
     private Controls controls;
 
@@ -109,5 +112,17 @@ public class InputReader : ScriptableObject, IPlayerActions
             JumpEvent?.Invoke();
         }
 
+    }
+
+    public void OnRewindTime(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            RewindEvent?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            RewindEvent?.Invoke(false);
+        }
     }
 }

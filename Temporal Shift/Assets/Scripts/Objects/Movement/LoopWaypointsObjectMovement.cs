@@ -12,11 +12,42 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable
     private int currrentWaypoint = 0;
     private bool isMoving = true;
 
+    private TimeBody timeBody;
+
+    private void Awake()
+    {
+        timeBody = GetComponent<TimeBody>();
+    }
+
+    private void OnEnable()
+    {
+        //timeBody.RewindingTime += OnRewindingTime;
+    }
+
+    
+
+    private void OnDisable()
+    {
+        //timeBody.RewindingTime -= OnRewindingTime;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(isMoving)
-            MoveThisObject();
+        if (timeBody.isRewinding)
+            return;
+        if (!isMoving)
+            return;
+
+        MoveThisObject();
+
+
+    }
+
+    private void OnRewindingTime()
+    {
+
     }
 
     private void MoveThisObject()

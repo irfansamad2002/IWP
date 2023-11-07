@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private InputReader inputReader;
+    [SerializeField] public InputReader inputReader;
     [SerializeField] private CharacterController characterController;
 
     [Header("Settings")]

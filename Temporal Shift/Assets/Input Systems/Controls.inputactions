@@ -42,6 +42,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "RewindTime",
+                    "type": "Button",
+                    "id": "962d7da6-3d51-48bb-8193-6030b40f4c33",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "4ab35e8d-00bf-411b-8364-f0344acc738f",
@@ -151,7 +160,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard & Mouse",
                     "action": "Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -208,6 +217,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Weapon3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3e7c107-5441-4e46-a478-3576dd86e846",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "RewindTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

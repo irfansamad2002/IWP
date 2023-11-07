@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeBody : MonoBehaviour
+[SelectionBase]
+public class TimeBody : MonoBehaviour, IRewindTimeable
 {
-    bool isRewinding = false;
+    public event Action RewindingTime;
+    public bool isRewinding = false;
 
     public float recordTime = 5f;
 
@@ -23,26 +25,18 @@ public class TimeBody : MonoBehaviour
         pointsInTime = new List<PointInTime>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            StartRewind();
-        }
-        if (Input.GetKeyUp(KeyCode.Return))
-        {
-            StopRewind();
-        }
-    }
-
     private void FixedUpdate()
     {
+        
+
         if (isRewinding)
         {
+            RewindingTime?.Invoke();
             Rewind();
         }
         else
         {
+
             Record();
         }
     }
@@ -58,7 +52,7 @@ public class TimeBody : MonoBehaviour
         }
         else
         {
-            StopRewind();
+            StopRewinding();
         }
     }
 
@@ -71,16 +65,17 @@ public class TimeBody : MonoBehaviour
         pointsInTime.Insert(0, new PointInTime(transform.position, transform.rotation));
     }
 
-    public void StartRewind()
+    public void StartRewinding()
     {
         isRewinding = true;
-        rb.isKinematic = true;
+        if (rb)
+            rb.isKinematic = true;
     }
 
-    public void StopRewind()
+    public void StopRewinding()
     {
         isRewinding = false;
-        rb.isKinematic = false;
+        if (rb)
+            rb.isKinematic = false;
     }
-
 }
