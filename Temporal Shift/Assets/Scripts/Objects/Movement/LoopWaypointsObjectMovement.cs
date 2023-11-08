@@ -13,10 +13,11 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable
     private bool isMoving = true;
 
     private TimeBody timeBody;
-
+    private StopObjectAnimation objectAnimationState;
     private void Awake()
     {
         timeBody = GetComponent<TimeBody>();
+        objectAnimationState = GetComponent<StopObjectAnimation>();
     }
 
     private void OnEnable()
@@ -75,10 +76,15 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable
     public void StopMoving()
     {
         isMoving = false;
+        if(objectAnimationState != null)
+            objectAnimationState.StopAnimating();
     }
 
     public void StartMoving()
     {
         isMoving = true;
+        if (objectAnimationState != null)
+            objectAnimationState.StartAnimating();
+
     }
 }
