@@ -7,10 +7,12 @@ public class StopBasicObjectRigidBody : MonoBehaviour, IStopTimeable
     Rigidbody rb;
 
     private Vector3 storedVelocity, storedAngularVelocity;
+    LoopWaypointsObjectMovement directionWaypoint;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        directionWaypoint = GetComponentInChildren<LoopWaypointsObjectMovement>();
     }
     public void StartMoving()
     {
@@ -25,6 +27,7 @@ public class StopBasicObjectRigidBody : MonoBehaviour, IStopTimeable
     {
         Debug.Log("STOP");
 
+        directionWaypoint.DirectionToWaypoint = Vector3.zero;
         storedVelocity = rb.velocity;
         storedAngularVelocity = rb.angularVelocity;
         rb.isKinematic = true;  

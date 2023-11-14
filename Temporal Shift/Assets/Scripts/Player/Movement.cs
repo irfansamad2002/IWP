@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("external movement " + externalMotion);
+        //Debug.Log("external movement " + externalMotion);
         Move();
     }
 

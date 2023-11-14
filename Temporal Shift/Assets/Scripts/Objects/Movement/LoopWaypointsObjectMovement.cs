@@ -75,7 +75,9 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     public void StopMoving()
     {
         isMoving = false;
-        if(objectAnimationState != null)
+        DirectionToWaypoint = Vector3.zero;
+
+        if (objectAnimationState != null)
             objectAnimationState.StopAnimating();
     }
 
