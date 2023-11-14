@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class FreezeOrb : MonoBehaviour
 {
+    public static event Action OnStopOrb;
+    public static event Action OnDestroyOrb;
+
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] InputReader _inputReader;
     [SerializeField] private float _howLongTheOrbLast = 5f;
@@ -29,10 +32,25 @@ public class FreezeOrb : MonoBehaviour
 
     private void HandlePressedAbility(bool state)
     {
-        if (!_freezeTime.AbleToShoot && state == true)
+        if (state == false)
+            return;
+
+        //Debug.Log("Left Click check on FreezeOrb");
+
+        //if user left click, destroy the orb
+        if (!ableToMove)
         {
+            DespawnTheOrb();
+        }
+
+        //if user left click, stop the orb from moving
+        if (!_freezeTime.AbleToShoot)
+        {
+            OnStopOrb?.Invoke();
             ableToMove = false;
         }
+
+        
     }
 
     private void Awake()
@@ -72,6 +90,9 @@ public class FreezeOrb : MonoBehaviour
 
     private void DespawnTheOrb()
     {
+        OnDestroyOrb?.Invoke();
+
+
         _freezeTime.AbleToShoot = true;
 
         // Notify the objects inside the orb to resume their movement
