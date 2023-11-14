@@ -245,7 +245,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &228923062612364803
 MonoBehaviour:
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRewinding: 0
   recordTime: 5
+  DirectionToPreviousState: {x: 0, y: 0, z: 0}
 --- !u!114 &412506021462208651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,5 +341,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10107097, y: 0.089512214, z: 0.017006844}
-  m_Center: {x: 0, y: 0, z: 0.034757875}
+  m_Size: {x: 0.10107097, y: 0.089512214, z: 0.028879073}
+  m_Center: {x: 0, y: 0, z: 0.040694036}

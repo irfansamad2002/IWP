@@ -15,10 +15,14 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     Rigidbody rb;
 
+    [Header("For External Motion")]
+    public Vector3 DirectionToPreviousState = Vector3.zero;
+    LoopWaypointsObjectMovement platformMovement;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        platformMovement = GetComponent<LoopWaypointsObjectMovement>();
     }
 
     private void Start()
@@ -32,6 +36,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
         if (isRewinding)
         {
+            platformMovement.DirectionToWaypoint = DirectionToPreviousState;
+
             RewindingTime?.Invoke();
             Rewind();
         }
@@ -41,7 +47,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
             Record();
         }
 
-        
+        //Debug.Log(platformMovement.DirectionToWaypoint);
+        //Debug.Log("DirectionToPreviousState " + DirectionToPreviousState);
     }
 
     private void Rewind()
@@ -49,6 +56,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
         if (pointsInTime.Count > 0)
         {
             PointInTime pointInTime = pointsInTime[0];
+            DirectionToPreviousState = pointInTime.position - transform.position;
+            DirectionToPreviousState.Normalize();
             transform.position = pointInTime.position;
             transform.rotation = pointInTime.rotation;
             pointsInTime.RemoveAt(0);
@@ -77,6 +86,7 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     public void StopRewinding()
     {
+        DirectionToPreviousState = Vector3.zero;
         isRewinding = false;
         if (rb)
             rb.isKinematic = false;
