@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     private Vector2 _inputDirection;
     private JumpAndGravity jumpAndGravity;
 
+    public Vector3 externalMotion;
+
     private void Start()
     {
         jumpAndGravity = GetComponent<JumpAndGravity>();
