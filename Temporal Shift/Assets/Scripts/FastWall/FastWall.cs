@@ -13,4 +13,11 @@ public class FastWall : MonoBehaviour
             iSpeedTimeable.MoveFastSpeed(HowMuchFaster);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("OnCollisionEnter");
+
+    }
+
 }

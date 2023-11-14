@@ -15,6 +15,7 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     Rigidbody rb;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,6 +40,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
             Record();
         }
+
+        
     }
 
     private void Rewind()

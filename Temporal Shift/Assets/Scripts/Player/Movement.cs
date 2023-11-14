@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("external movement " + externalMotion);
         Move();
     }
 
@@ -77,7 +78,8 @@ public class Movement : MonoBehaviour
             vec3InputDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
         }
 
-
-        characterController.Move(vec3InputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, jumpAndGravity._verticalVelocity, 0.0f) * Time.deltaTime);
+        //Vector3 externalMove = new Vector3(externalMotion)
+        characterController.Move(externalMotion * Time.deltaTime);
+        characterController.Move(vec3InputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f,jumpAndGravity._verticalVelocity, 0.0f)  * Time.deltaTime);
     }
 }
