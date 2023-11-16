@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(TimeBody))]
 public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedTimeable
 {
     public Transform[] Waypoints;

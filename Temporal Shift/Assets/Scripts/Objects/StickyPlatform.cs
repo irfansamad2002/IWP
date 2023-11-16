@@ -48,5 +48,10 @@ public class StickyPlatform : MonoBehaviour
         }
     }
 
-  
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("SUK MA AS");
+    }
+
+
 }
