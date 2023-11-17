@@ -14,7 +14,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<bool> RewindEvent;
     public event Action<bool> SpeedWallEvent;
 
-    public event Action<bool> InteractEvent;
+    public event Action InteractEvent;
     public event Action<bool> Weapon1Event;
     public event Action<bool> Weapon2Event;
     public event Action<bool> Weapon3Event;
@@ -58,11 +58,7 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if (context.performed)
         {
-            InteractEvent?.Invoke(true);
-        }
-        else if (context.canceled)
-        {
-            InteractEvent?.Invoke(false);
+            InteractEvent?.Invoke();
         }
     }
 

@@ -36,7 +36,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
         if (isRewinding)
         {
-            platformMovement.DirectionToWaypoint = DirectionToPreviousState;
+            if(platformMovement != null)
+                platformMovement.DirectionToWaypoint = DirectionToPreviousState;
 
             RewindingTime?.Invoke();
             Rewind();
