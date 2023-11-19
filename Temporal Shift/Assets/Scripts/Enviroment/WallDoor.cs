@@ -14,9 +14,10 @@ public class WallDoor : MonoBehaviour
 
     float targetHowHigh;
     float originalHeight;
-    private void Awake()
+    private void Start()
     {
         originalHeight = transform.position.y;
+        targetHowHigh = originalHeight;
     }
 
     private void OnTriggerEnter(Collider other)
