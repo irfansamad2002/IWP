@@ -39,7 +39,7 @@ public class PlayerSFX : MonoBehaviour
     {
         if (isJumping && JandG.Grounded)
         {
-            Debug.Log("play land");
+            //Debug.Log("play land");
             audioSource.clip = jumpLandSFX;
             audioSource.PlayOneShot(jumpLandSFX);
             

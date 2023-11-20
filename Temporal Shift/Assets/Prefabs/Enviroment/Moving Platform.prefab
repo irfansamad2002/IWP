@@ -280,6 +280,7 @@ MonoBehaviour:
   speed: 5
   waypointThreshold: 0.1
   DirectionToWaypoint: {x: 0, y: 0, z: 0}
+  delayBeforeNextWaypoint: 10
 --- !u!114 &1535864403654111158
 MonoBehaviour:
   m_ObjectHideFlags: 0

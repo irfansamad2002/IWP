@@ -8,9 +8,17 @@ public class InteractConsole : MonoBehaviour, IInteractable
     [SerializeField] GameObject ballPrefab;
     [SerializeField] float shootForce = 500f;
 
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void Interacted()
     {
         SpawnTheBall();
+        PlaySFX();
     }
     [ContextMenu("SpawnTheBall")]
     void SpawnTheBall()
@@ -22,6 +30,10 @@ public class InteractConsole : MonoBehaviour, IInteractable
         go.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * shootForce);
     }
     
+    void PlaySFX()
+    {
+        audioSource.Play();
+    }
 
    
 }

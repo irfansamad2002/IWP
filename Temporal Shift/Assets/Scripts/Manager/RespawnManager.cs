@@ -44,7 +44,7 @@ public class RespawnManager : MonoBehaviour
     private void CheckPoint_OnLatestCheckpointTouch(CheckPoint checkpoint)
     {
         latestActivatedCheckpoint = checkpoint;
-        Debug.Log("latest place the player shd respawn is at " + checkpoint.playerRespawnLocation.position);
+        //Debug.Log("latest place the player shd respawn is at " + checkpoint.playerRespawnLocation.position);
     }
 
     private void makePlayerMOVELASIAL()

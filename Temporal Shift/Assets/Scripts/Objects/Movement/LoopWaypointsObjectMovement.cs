@@ -6,6 +6,7 @@ using UnityEngine;
 public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedTimeable
 {
     public Transform[] Waypoints;
+    
     public float speed = 5.0f;
     public float waypointThreshold = 0.1f;//Threshold for considering a waypoint as reached
 
@@ -20,6 +21,9 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     [Header("For External Motion")]
     public Vector3 DirectionToWaypoint;
 
+    private bool delayedBeforeTurn;
+    [SerializeField] private float delayDuration = 1f;
+
     private void Awake()
     {
         timeBody = GetComponent<TimeBody>();
@@ -29,6 +33,8 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     private void Start()
     {
         defaultSpeed = speed;
+        delayedBeforeTurn = true;
+
     }
 
     // Update is called once per frame
@@ -38,14 +44,18 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
             return;
         if (!isMoving)
             return;
-
-        MoveThisObject();
+        
+        if (delayedBeforeTurn)
+        {
+            MoveThisObject();
+        }
 
 
     }
 
     private void MoveThisObject()
     {
+        
         // Check if there are waypoints
         if (Waypoints.Length == 0)
             return;
@@ -60,16 +70,23 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
         // Check if the platform has reached the current waypoint
         if (Vector3.Distance(transform.position, Waypoints[currrentWaypoint].position) < waypointThreshold)
         {
-            currrentWaypoint++;
             
+            currrentWaypoint++;
+            StartCoroutine(delayCoroutine(1f));
             // If the platform reaches the end of the waypoint list, loop back to the first waypoint
             if (currrentWaypoint >= Waypoints.Length)
             {
                 currrentWaypoint = 0;
             }
         }
+    }
 
-        
+    private IEnumerator delayCoroutine(float duration)
+    {
+
+        delayedBeforeTurn = false;
+        yield return new WaitForSeconds(duration);
+        delayedBeforeTurn = true;
     }
 
     public void StopMoving()
@@ -97,5 +114,26 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     public void MoveNormalSpeed()
     {
         speed = defaultSpeed;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        if (Waypoints == null)
+            return;
+
+        for (int i = 0; i < Waypoints.Length - 1; i++)
+        {
+            Gizmos.DrawLine(Waypoints[i].position, Waypoints[i + 1].position);
+        }
+
+        // Draw a line from the last waypoint to the first waypoint to complete the loop
+        if (Waypoints.Length > 1)
+        {
+            Gizmos.DrawLine(Waypoints[Waypoints.Length - 1].position, Waypoints[0].position);
+        }
+
+
     }
 }
