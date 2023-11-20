@@ -59,6 +59,13 @@ public class TurretAttackBasedOnTime : MonoBehaviour
             hitPosition = hit.point;
             GameObject newExplosionFX = Instantiate(VFX.explosionFX, hitPosition, Quaternion.identity);
             Destroy(newExplosionFX, 2);
+
+            IHitable iHitable = hit.collider.gameObject.GetComponent<IHitable>();
+
+            if (iHitable != null)
+            {
+                iHitable.Hit();
+            }
         }
 
 
@@ -74,7 +81,13 @@ public class TurretAttackBasedOnTime : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(firePoint.transform.position, firePoint.forward * maxDistance);
 
+    }
 
+    
 
 }

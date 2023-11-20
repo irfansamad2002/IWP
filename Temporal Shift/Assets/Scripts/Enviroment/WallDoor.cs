@@ -25,7 +25,7 @@ public class WallDoor : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        Debug.Log("Open door");
+        //Debug.Log("Open door");
         isOpen = true;
         targetHowHigh = howHighDoorGoToOpen + door.transform.position.y;
         OnDoorOpenOrClose?.Invoke(isOpen);
@@ -36,7 +36,7 @@ public class WallDoor : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        Debug.Log("Close door");
+        //Debug.Log("Close door");
         isOpen = false;
         targetHowHigh = originalHeight;
         OnDoorOpenOrClose?.Invoke(isOpen);

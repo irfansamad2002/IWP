@@ -101,7 +101,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 5149643310887468756}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 310305447404193209}
   - component: {fileID: 1677557363649416007}
   - component: {fileID: 5330606776919573141}
+  - component: {fileID: 8442775703308560315}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -168,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5705532688354696085}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.037691128, z: -0, w: 0.99928945}
+  m_LocalRotation: {x: 0, y: -0.037690256, z: 0, w: 0.9992896}
   m_LocalPosition: {x: 0.17, y: -3.0035782, z: 46.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   characterController: {fileID: 8870988047985206299}
   movementSpeed: 6
   acceleration: 10
+  externalMotion: {x: 0, y: 0, z: 0}
 --- !u!114 &4208078144080157458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +210,7 @@ MonoBehaviour:
   _groundedRadius: 0.5
   _groundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   _gravity: -15
   _jumpHeight: 1.2
   _inputReader: {fileID: 11400000, guid: 1a3aacf547a35f843b87b1517259f17e, type: 2}
@@ -235,8 +237,8 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_Radius: 0.36
+  m_SlopeLimit: 47.84
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
   m_MinMoveDistance: 0
@@ -286,4 +288,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e75bc5a9a761794a8da62f0c80a0c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 129
   maxDistance: 10
+--- !u!114 &8442775703308560315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705532688354696085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c178ec00aa2dca4d9441842bbc1aece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 2

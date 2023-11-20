@@ -6,30 +6,50 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject Player;
+    GameObject player;
+
+    private CheckPoint latestActivatedCheckpoint;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void OnEnable()
     {
-        DeathArea.OnRespawnPlayer += DeathArea_OnRespawnPlayer;
+        PlayerHealth.OnDeath += PlayerHealth_OnDeath;
+        CheckPoint.OnLatestCheckpointTouch += CheckPoint_OnLatestCheckpointTouch;
     }
 
     private void OnDisable()
     {
-        DeathArea.OnRespawnPlayer -= DeathArea_OnRespawnPlayer;
+        PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
+        CheckPoint.OnLatestCheckpointTouch -= CheckPoint_OnLatestCheckpointTouch;
     }
 
-    private void DeathArea_OnRespawnPlayer(Transform respawnLocation)
+    private void RespawnPlayer(Transform respawnLocation)
     {
         Debug.Log("RESPAWN AT" + respawnLocation.position);
-        Player.GetComponent<Movement>().enabled = false;
-        Player.transform.position = respawnLocation.position;
+        player.GetComponent<Movement>().enabled = false;
+        player.transform.position = respawnLocation.position;
         Invoke("makePlayerMOVELASIAL", 0.1f);
 
     }
 
+    private void PlayerHealth_OnDeath()
+    {
+        RespawnPlayer(latestActivatedCheckpoint.playerRespawnLocation);
+    }
+
+    private void CheckPoint_OnLatestCheckpointTouch(CheckPoint checkpoint)
+    {
+        latestActivatedCheckpoint = checkpoint;
+        Debug.Log("latest place the player shd respawn is at " + checkpoint.playerRespawnLocation.position);
+    }
+
     private void makePlayerMOVELASIAL()
     {
-        Player.GetComponent<Movement>().enabled = true;
+        player.GetComponent<Movement>().enabled = true;
 
     }
 
