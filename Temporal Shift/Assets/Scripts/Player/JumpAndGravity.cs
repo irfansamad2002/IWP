@@ -6,7 +6,7 @@ using UnityEngine;
 public class JumpAndGravity : MonoBehaviour
 {
 
-    private bool Grounded = true;
+    public bool Grounded = true;
 	[SerializeField] private float _groundedRadius = 0.5f;
 	[SerializeField] private LayerMask _groundLayers;
 	[SerializeField] private float _gravity = -15.0f;
@@ -28,7 +28,8 @@ public class JumpAndGravity : MonoBehaviour
 	private float _jumpTimeoutDelta;
 	private float _fallTimeoutDelta;
 
-	private bool _jump = false;
+	[HideInInspector]
+	public bool _jump = false;
 
     private void OnEnable()
     {

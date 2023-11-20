@@ -14,10 +14,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private float acceleration = 10f;
 
     private float _speed;
-    private Vector2 _inputDirection;
-    private JumpAndGravity jumpAndGravity;
+    [HideInInspector]
+    public JumpAndGravity jumpAndGravity;
 
     public Vector3 externalMotion;
+    public Vector2 _inputDirection;
 
     private void Start()
     {
