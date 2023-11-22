@@ -45,10 +45,10 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
         if (!isMoving)
             return;
         
-        if (delayedBeforeTurn)
-        {
+        //if (delayedBeforeTurn)
+        //{
             MoveThisObject();
-        }
+        //}
 
 
     }
