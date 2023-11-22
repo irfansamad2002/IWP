@@ -20,6 +20,8 @@ public class Movement : MonoBehaviour
     public Vector3 externalMotion;
     public Vector2 _inputDirection;
 
+    public bool canFly;
+
     private void Start()
     {
         jumpAndGravity = GetComponent<JumpAndGravity>();
@@ -79,8 +81,13 @@ public class Movement : MonoBehaviour
             vec3InputDirection = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
         }
 
-        //Vector3 externalMove = new Vector3(externalMotion)
+        
+
+        // If not in fly mode, apply normal movement with gravity
         characterController.Move(externalMotion * Time.deltaTime);
-        characterController.Move(vec3InputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f,jumpAndGravity._verticalVelocity, 0.0f)  * Time.deltaTime);
+        characterController.Move(vec3InputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, jumpAndGravity._verticalVelocity, 0.0f) * Time.deltaTime);
+        
+
+            
     }
 }
