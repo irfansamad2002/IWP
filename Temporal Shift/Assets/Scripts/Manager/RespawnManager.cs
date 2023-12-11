@@ -10,6 +10,8 @@ public class RespawnManager : MonoBehaviour
 
     private CheckPoint latestActivatedCheckpoint;
 
+    public Transform defaultRespawnLocation;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,7 +40,14 @@ public class RespawnManager : MonoBehaviour
 
     private void PlayerHealth_OnDeath()
     {
-        RespawnPlayer(latestActivatedCheckpoint.playerRespawnLocation);
+        if (latestActivatedCheckpoint == null)
+        {
+            RespawnPlayer(defaultRespawnLocation);
+        }
+        else
+        {
+            RespawnPlayer(latestActivatedCheckpoint.playerRespawnLocation);
+        }
     }
 
     private void CheckPoint_OnLatestCheckpointTouch(CheckPoint checkpoint)

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text leftClickUI;
     [SerializeField] private TMP_Text rightClickUI;
     [SerializeField] private GameObject RightClickGO;
+    [SerializeField] private CanvasGroup canvasGroup;
 
 
     public static UIManager Instance;
@@ -33,10 +34,13 @@ public class UIManager : MonoBehaviour
         TimeRewindController.OnHideUI += TimeRewindController_OnHideUI;
         TimeRewindController.OnShowCancelUI += TimeRewindController_OnShowCancelUI;
         TimeRewindController.OnShowHoldUI += TimeRewindController_OnShowHoldUI;
+
+        PlayerHealth.OnHit += PlayerHealth_OnHit;
         
     }
 
-  
+    
+
     private void OnDisable()
     {
         FreezeTime.OnSpawnFreezeOrb -= FreezeTime_OnSpawnFreezeOrb;
@@ -45,6 +49,29 @@ public class UIManager : MonoBehaviour
         TimeRewindController.OnHideUI -= TimeRewindController_OnHideUI;
         TimeRewindController.OnShowCancelUI -= TimeRewindController_OnShowCancelUI;
         TimeRewindController.OnShowHoldUI -= TimeRewindController_OnShowHoldUI;
+
+        PlayerHealth.OnHit -= PlayerHealth_OnHit;
+
+    }
+
+    private void PlayerHealth_OnHit()
+    {
+        canvasGroup.alpha = 1f;
+        StartCoroutine(FadeBloodOut());
+    }
+
+    private IEnumerator FadeBloodOut()
+    {
+        float elapsedTime = 0f;
+        float fadeDuration = 2f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        canvasGroup.alpha = 0f; 
     }
 
     private void TimeRewindController_OnShowHoldUI()

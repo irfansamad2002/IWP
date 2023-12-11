@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class DeathArea : MonoBehaviour
 {
-    [SerializeField] Transform playerRespawnLocation;
 
     BoxCollider boxCollider;
 

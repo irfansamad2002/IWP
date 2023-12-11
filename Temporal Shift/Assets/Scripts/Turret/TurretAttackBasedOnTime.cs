@@ -15,12 +15,11 @@ public class TurretFX
     [Tooltip("Muzzle transform position")]
     public Transform muzzle;
     [Tooltip("Spawn this GameObject when shooting")]
-    public GameObject shotFX;
-    [Tooltip("Spawn this GameObject when on hit position")]
-    public GameObject explosionFX;
+    public GameObject muzzleVFX;
 }
 
-public class TurretAttackBasedOnTime : MonoBehaviour
+[SelectionBase]
+public class TurretAttackBasedOnTime : MonoBehaviour, IStopTimeable
 {
     public GameObject projectilePrefab; // Reference to the projectile prefab
     public Transform firePoint; // The point where the projectile will be spawned
@@ -51,22 +50,12 @@ public class TurretAttackBasedOnTime : MonoBehaviour
         //play animation
         GetComponent<Animator>().SetTrigger("Shot");
         //spawn shotvfx on muzzle
-        GameObject newShotFX = Instantiate(VFX.shotFX, VFX.muzzle);
+        GameObject newShotFX = Instantiate(VFX.muzzleVFX, VFX.muzzle);
         Destroy(newShotFX, 2);
 
-        if (Physics.Raycast(firePoint.transform.position, firePoint.forward, out RaycastHit hit, maxDistance))
-        {
-            hitPosition = hit.point;
-            GameObject newExplosionFX = Instantiate(VFX.explosionFX, hitPosition, Quaternion.identity);
-            Destroy(newExplosionFX, 2);
+        Instantiate(projectilePrefab, VFX.muzzle.position, VFX.muzzle.rotation);
 
-            IHitable iHitable = hit.collider.gameObject.GetComponent<IHitable>();
-
-            if (iHitable != null)
-            {
-                iHitable.Hit();
-            }
-        }
+        
 
 
     }
@@ -88,6 +77,16 @@ public class TurretAttackBasedOnTime : MonoBehaviour
 
     }
 
-    
+    public void StopMoving()
+    {
+        Debug.Log("stop turret");
+        CancelInvoke();
+    }
 
+    public void StartMoving()
+    {
+        Debug.Log("StartMoving turret");
+        InvokeRepeating(nameof(Shoot), 0f, shootInterval);
+
+    }
 }
