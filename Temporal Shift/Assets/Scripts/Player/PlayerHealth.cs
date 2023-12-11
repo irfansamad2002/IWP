@@ -9,8 +9,9 @@ public class PlayerHealth : MonoBehaviour, IHitable
     public static event Action OnDeath;
 
     [Header("how many time player can get shot by turret")]
-    [SerializeField] int Maxhealth = 3;
-    int currentHealth;
+    public int Maxhealth = 3;
+    [HideInInspector]
+    public int currentHealth;
     private void Start()
     {
         currentHealth = Maxhealth;
