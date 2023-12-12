@@ -70,12 +70,12 @@ public class TurretAttackBasedOnTime : MonoBehaviour, IStopTimeable
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(firePoint.transform.position, firePoint.forward * maxDistance);
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawRay(firePoint.transform.position, firePoint.forward * maxDistance);
 
-    }
+    //}
 
     public void StopMoving()
     {

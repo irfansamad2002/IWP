@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 3635724904014788542}
   - component: {fileID: 7375336143265868139}
   - component: {fileID: 8147343592672337423}
+  - component: {fileID: 4909657423237809957}
   - component: {fileID: 8434301464010484421}
   m_Layer: 0
   m_Name: Head
@@ -284,7 +285,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
@@ -324,14 +325,31 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3789608413580502524, guid: 26e48127ffee1324bbc7a2f7ddf0aa09,
     type: 3}
   firePoint: {fileID: 5973598992231394910}
-  shootInterval: 3
-  maxDistance: 18.6
+  shootInterval: 1.77
+  maxDistance: 72.5
   SFX:
     shotClip: {fileID: 8300000, guid: 29c04ba19da834fb0968146ce5e3a847, type: 3}
   VFX:
     muzzle: {fileID: 5973598992231394910}
     muzzleVFX: {fileID: 1579546626485678, guid: 7db58c0e931b44d52826ad1829194c32,
       type: 3}
+--- !u!114 &4909657423237809957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309389194091341197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b54a63447e16694880da678cf405b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTransform: {fileID: 0}
+  AgroTreshold: 0.8
+  turretAtk: {fileID: 8147343592672337423}
+  rotationSpeed: 4
+  firePoint: {fileID: 5973598992231394910}
 --- !u!120 &8434301464010484421
 LineRenderer:
   serializedVersion: 2
