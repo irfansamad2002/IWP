@@ -19,6 +19,7 @@ public class FreezeOrb : MonoBehaviour
 
     private List<IStopTimeable> stoppedObjects = new List<IStopTimeable>();
 
+
     private void OnEnable()
     {
         _inputReader.AbilityEvent += HandlePressedAbility;
