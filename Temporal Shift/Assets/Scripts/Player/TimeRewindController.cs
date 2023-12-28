@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class TimeRewindController : MonoBehaviour
 {
-    public static event Action OnShowCancelUI;
-    public static event Action OnShowHoldUI;
-    public static event Action OnHideUI;
+    public static event Action OnRewindingObjectUI;
+    public static event Action OnAbleToRewindObjectUI;
+    public static event Action OnNotLookingAtRewindObjectUI;
+
 
     [SerializeField] private LayerMask layerMask;
     public float maxDistance = 10f; // Maximum distance for rewinding
@@ -40,7 +41,7 @@ public class TimeRewindController : MonoBehaviour
         {
             rewindingObject.GetComponent<IRewindTimeable>().StopRewinding(); // Stop rewinding when the player releases right-click
             rewindingObject = null;
-        }
+        }   
     }
 
     private void Update()
@@ -54,26 +55,31 @@ public class TimeRewindController : MonoBehaviour
 
         if (isLookingObject)
         {
+            
+
             //show ui
             if (isHoldingRightClick)
             {
-                OnShowCancelUI?.Invoke();
+                OnRewindingObjectUI?.Invoke();
             }
             else
             {
-                OnShowHoldUI?.Invoke();
+
+                OnAbleToRewindObjectUI?.Invoke();
             }
         }
         else
         {
             if (isHoldingRightClick && rewindingObject != null)
             {
-                OnShowCancelUI?.Invoke();
+
+                OnRewindingObjectUI?.Invoke();
 
             }
             else
             {
-                OnHideUI?.Invoke();
+
+                OnNotLookingAtRewindObjectUI?.Invoke();
             }
                 
         }
@@ -87,7 +93,8 @@ public class TimeRewindController : MonoBehaviour
             IRewindTimeable iRewindTimeable = hit.collider.gameObject.GetComponent<IRewindTimeable>();
             if (iRewindTimeable != null)
             {
-                //OnAbleToRewind?.Invoke();
+                iRewindTimeable.AbleToRewind();
+                 //OnAbleToRewind?.Invoke();
                 isLookingObject = true;
                 if (isHoldingRightClick)
                 {

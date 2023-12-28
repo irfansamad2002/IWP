@@ -31,9 +31,9 @@ public class UIManager : MonoBehaviour
         FreezeTime.OnSpawnFreezeOrb += FreezeTime_OnSpawnFreezeOrb;
         FreezeOrb.OnDestroyOrb += FreezeTime_OnDestroyOrb;
         FreezeOrb.OnStopOrb += FreezeTime_OnStopOrb;
-        TimeRewindController.OnHideUI += TimeRewindController_OnHideUI;
-        TimeRewindController.OnShowCancelUI += TimeRewindController_OnShowCancelUI;
-        TimeRewindController.OnShowHoldUI += TimeRewindController_OnShowHoldUI;
+        TimeRewindController.OnNotLookingAtRewindObjectUI += TimeRewindController_OnHideUI;
+        TimeRewindController.OnRewindingObjectUI += TimeRewindController_OnShowCancelUI;
+        TimeRewindController.OnAbleToRewindObjectUI += TimeRewindController_OnShowHoldUI;
 
         PlayerHealth.OnHit += PlayerHealth_OnHit;
         
@@ -46,9 +46,9 @@ public class UIManager : MonoBehaviour
         FreezeTime.OnSpawnFreezeOrb -= FreezeTime_OnSpawnFreezeOrb;
         FreezeOrb.OnDestroyOrb -= FreezeTime_OnDestroyOrb;
         FreezeOrb.OnStopOrb -= FreezeTime_OnStopOrb;
-        TimeRewindController.OnHideUI -= TimeRewindController_OnHideUI;
-        TimeRewindController.OnShowCancelUI -= TimeRewindController_OnShowCancelUI;
-        TimeRewindController.OnShowHoldUI -= TimeRewindController_OnShowHoldUI;
+        TimeRewindController.OnNotLookingAtRewindObjectUI -= TimeRewindController_OnHideUI;
+        TimeRewindController.OnRewindingObjectUI -= TimeRewindController_OnShowCancelUI;
+        TimeRewindController.OnAbleToRewindObjectUI -= TimeRewindController_OnShowHoldUI;
 
         PlayerHealth.OnHit -= PlayerHealth_OnHit;
 
