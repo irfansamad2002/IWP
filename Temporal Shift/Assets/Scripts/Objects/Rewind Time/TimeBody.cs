@@ -11,12 +11,13 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
     public bool isRewinding = false;
     public float recordTime = 5f;
 
-
-    List<PointInTime> pointsInTime;
+    [HideInInspector]
+    public List<PointInTime> pointsInTime;
     OutlineColors outlineColors;
     Outline outline;
     Rigidbody rb;
     bool lookedAtOrRewinding;
+    [SerializeField] LineRewindDraw lineRewindDraw;
 
     [Header("For External Motion")]
     public Vector3 DirectionToPreviousState = Vector3.zero;
@@ -37,7 +38,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     private void FixedUpdate()
     {
-        outline.OutlineColor = outlineColors.NotLookingColor;
+        if(outlineColors)
+            outline.OutlineColor = outlineColors.NotLookingColor;
 
 
         if (isRewinding)
@@ -46,6 +48,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
                 platformMovement.DirectionToWaypoint = DirectionToPreviousState;
 
             Rewind();
+
+            
         }
         else
         {
@@ -84,7 +88,11 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     public void StartRewinding()
     {
-        outline.OutlineColor = outlineColors.RewindingObjectColor;
+        if (outlineColors)
+            outline.OutlineColor = outlineColors.RewindingObjectColor;
+
+        lineRewindDraw.ShowLine();
+
         isRewinding = true;
         if (rb)
             rb.isKinematic = true;
@@ -92,7 +100,10 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
 
     public void StopRewinding()
     {
-        outline.OutlineColor = outlineColors.NotLookingColor;
+        if (outlineColors)
+            outline.OutlineColor = outlineColors.NotLookingColor;
+
+        lineRewindDraw.HideLine();
 
         DirectionToPreviousState = Vector3.zero;
         isRewinding = false;
@@ -104,7 +115,8 @@ public class TimeBody : MonoBehaviour, IRewindTimeable
     {
         if (!isRewinding)
         {
-            outline.OutlineColor = outlineColors.AbleToRewindObjectColor;
+            if (outlineColors)
+                outline.OutlineColor = outlineColors.AbleToRewindObjectColor;
 
         }
     }
