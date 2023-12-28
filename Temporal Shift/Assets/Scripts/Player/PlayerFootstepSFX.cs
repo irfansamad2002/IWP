@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSFX : MonoBehaviour
+public class PlayerFootstepSFX : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] float frequency = 0.5f; // Adjust the cooldown time as needed
