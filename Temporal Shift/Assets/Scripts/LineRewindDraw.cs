@@ -22,7 +22,7 @@ public class LineRewindDraw : MonoBehaviour
     {
         for (int i = 0; i < timeBody.pointsInTime.Count; i++)
         {
-            Debug.Log(timeBody.pointsInTime.Count);
+            //Debug.Log(timeBody.pointsInTime.Count);
             lineRenderer.SetPosition(i, timeBody.pointsInTime[i].position);
 
         }

@@ -25,7 +25,7 @@ public class FreezeSFX : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("play Awake audio");
+        //Debug.Log("play Awake audio");
         audioSource.PlayOneShot(startFreezeSFX);
 
     }
@@ -35,13 +35,13 @@ public class FreezeSFX : MonoBehaviour
 
     private void FreezeOrb_OnStopOrb()
     {
-        Debug.Log("play FreezeOrb_OnStopOrb audio");
+        //Debug.Log("play FreezeOrb_OnStopOrb audio");
         audioSource.PlayOneShot(stoppedOrbMoveSFX);
     }
 
     private void FreezeOrb_OnDestroyOrb()
     {
-        Debug.Log("play FreezeOrb_OnDestroyOrb audio");
+        //Debug.Log("play FreezeOrb_OnDestroyOrb audio");
 
         // Get the length of the audio clip
         float audioClipLength = destroyOrbSFX.length;

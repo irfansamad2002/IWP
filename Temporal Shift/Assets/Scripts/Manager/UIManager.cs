@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text leftClickUI;
     [SerializeField] private TMP_Text rightClickUI;
+    [SerializeField] private TMP_Text rewindingTextUI;
     [SerializeField] private GameObject RightClickGO;
     [SerializeField] private CanvasGroup canvasGroup;
 
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         RightClickGO.SetActive(false);
+        rewindingTextUI.gameObject.SetActive(false);
     }
 
     private void Awake()
@@ -87,6 +89,8 @@ public class UIManager : MonoBehaviour
     private void TimeRewindController_OnHideUI()
     {
         RightClickGO.SetActive(false);
+        rewindingTextUI.gameObject.SetActive(false);
+
     }
 
 
@@ -125,12 +129,15 @@ public class UIManager : MonoBehaviour
 
         RightClickGO.SetActive(true);
         rightClickUI.text = "Hold To Rewind";
+
     }
 
     private void RightHoldRewinding()
     {
         RightClickGO.SetActive(true);
         rightClickUI.text = "Release To Cancel";
+        rewindingTextUI.gameObject.SetActive(true);
+
     }
 
 }
