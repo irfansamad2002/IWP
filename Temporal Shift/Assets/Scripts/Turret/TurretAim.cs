@@ -22,7 +22,7 @@ public class TurretAim : MonoBehaviour
             return;
         if (toPlayer.magnitude <= turretAtk.maxDistance)
         {
-            Debug.Log("in range");
+            //Debug.Log("in range");
 
             // Calculate the rotation to look at the player
             Quaternion targetRotation = Quaternion.LookRotation(toPlayer);
