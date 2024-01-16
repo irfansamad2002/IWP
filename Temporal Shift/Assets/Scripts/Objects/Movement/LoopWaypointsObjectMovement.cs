@@ -22,7 +22,7 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     public Vector3 DirectionToWaypoint;
 
     private bool delayedBeforeTurn;
-    [SerializeField] private float delayDuration = 1f;
+    //[SerializeField] private float delayDuration = 1f;
 
     private void Awake()
     {

@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Multiple Button Activation
       objectReference: {fileID: 0}
+    - target: {fileID: 2127276398323245809, guid: d27328854f892844d9b6f52dc0595bd9,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6896680141934576390, guid: d27328854f892844d9b6f52dc0595bd9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -95,6 +100,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 6228619608597958435}
   litMaterial: {fileID: 2100000, guid: 5622489565244204e8d19f7949650d2f, type: 2}
   pendingMaterial: {fileID: 2100000, guid: 8a0f0522234d2014888f1fea1da12cf0, type: 2}
+  objectToBeActivated: {fileID: 0}
 --- !u!23 &6228619608597958435 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8621847109073536835, guid: d27328854f892844d9b6f52dc0595bd9,
