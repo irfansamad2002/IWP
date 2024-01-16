@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5973598992231394910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 8147343592672337423}
   - component: {fileID: 4909657423237809957}
   - component: {fileID: 8434301464010484421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,6 +333,9 @@ MonoBehaviour:
     muzzle: {fileID: 5973598992231394910}
     muzzleVFX: {fileID: 1579546626485678, guid: 7db58c0e931b44d52826ad1829194c32,
       type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &4909657423237809957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,9 +395,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 127, y: -1.8500286, z: 107.5}
-  - {x: 127, y: -1.850029, z: 123.774994}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

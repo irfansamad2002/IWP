@@ -25,7 +25,7 @@ public class ActivateByMultipleButtons : MonoBehaviour
     {
         if (IfAllButtonPressed())
         {
-            Debug.Log("All pressed");
+            //Debug.Log("All pressed");
             OnActivation?.Invoke(HowLongDoorOpen);
             Activate(HowLongDoorOpen);
         }

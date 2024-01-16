@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5691805500382092986}
   - component: {fileID: 3705281383907210650}
   - component: {fileID: 3217475276285446615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Press E to Interact UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 439
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0

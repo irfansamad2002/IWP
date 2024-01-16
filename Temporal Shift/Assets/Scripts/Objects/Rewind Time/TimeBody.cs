@@ -6,8 +6,8 @@ using UnityEngine;
 [SelectionBase]
 public class TimeBody : MonoBehaviour, IRewindTimeable
 {
-    public event Action OnRewinding;
-    public event Action OnStopRewinding;
+    //public event Action OnRewinding;
+    //public event Action OnStopRewinding;
     public bool isRewinding = false;
     public float recordTime = 5f;
 
