@@ -4,13 +4,53 @@ using UnityEngine;
 
 public class HideMouseOnFocus : MonoBehaviour
 {
-    private void OnApplicationFocus(bool focus)
+    private bool isCursorVisible = false;
+
+    private void Start()
     {
-        SetCursorState(focus);
+        HideCursor();
     }
 
-    private void SetCursorState(bool newState)
+    private void OnApplicationFocus(bool focus)
     {
-        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+        SetCursorState();
     }
+
+    private void SetCursorState()
+    {
+        if (isCursorVisible)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void ToggleCursorVisibility()
+    {
+        isCursorVisible = !isCursorVisible;
+        Cursor.visible = isCursorVisible;
+        SetCursorState();
+    }
+
+    public void ShowCursor()
+    {
+        isCursorVisible = true;
+        Cursor.visible = true;
+        SetCursorState();
+
+    }
+
+    public void HideCursor()
+    {
+        isCursorVisible = false;
+        Cursor.visible = false;
+        SetCursorState();
+
+    }
+
+
 }
