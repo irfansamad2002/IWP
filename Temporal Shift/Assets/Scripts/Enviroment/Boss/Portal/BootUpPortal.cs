@@ -49,6 +49,7 @@ public class BootUpPortal : MonoBehaviour
     {
         if (IfAllGeneratorCharged())
         {
+            Debug.Log("Turn on portal, all " + allTheGenerators.Count + " of the generator is charged");
             TurnOn();
         }
         else
