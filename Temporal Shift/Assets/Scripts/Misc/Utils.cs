@@ -10,9 +10,20 @@ public static class Utils
         monoBehaviour.StartCoroutine(RunAfterDelayRoutine(delay, task));
     }
 
+    public static void RunAfterSecondsRealtime(MonoBehaviour monoBehaviour, float delay, Action task)
+    {
+        monoBehaviour.StartCoroutine(RunAfterSecondsRealtime(delay, task));
+    }
+
     private static IEnumerator RunAfterDelayRoutine(float delay, Action task)
     {
         yield return new WaitForSeconds(delay);
+        task.Invoke();
+    }
+
+    private static IEnumerator RunAfterSecondsRealtime(float delay, Action task)
+    {
+        yield return new WaitForSecondsRealtime(delay);
         task.Invoke();
     }
 }

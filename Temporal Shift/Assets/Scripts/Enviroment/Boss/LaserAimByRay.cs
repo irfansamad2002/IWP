@@ -22,6 +22,15 @@ public class LaserAimByRay : MonoBehaviour
         int layerMask = ~LayerMask.GetMask("PressERange");  // Exclude the layer of your button
         if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ~layerMask))
         {
+            ChargingEmmision hitGenerator = hit.collider.gameObject.GetComponent<ChargingEmmision>();
+           if (hitGenerator != null)
+           {
+                hitGenerator.Charge();
+           }
+
+
+
+
             hitPosition = hit.point;
             daDefaultScript.StartPosition = transform.position;
             daDefaultScript.EndPosition = hitPosition;
