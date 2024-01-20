@@ -13,7 +13,8 @@ public class MultiButtonTrigger : MonoBehaviour, IHitable, IInteractable
     [SerializeField] Material pendingMaterial;
 
     [Space(5)]
-    [SerializeField] ActivateByMultipleButtons objectToBeActivated;
+    //[SerializeField] OpenWallDoor objectToBeActivated;
+    [SerializeField] ActivateByMultipleButtonsEvent objectToBeActivatedNew;
 
     Material unLitMaterial;
     private bool isPressed;
@@ -23,19 +24,19 @@ public class MultiButtonTrigger : MonoBehaviour, IHitable, IInteractable
     private void OnEnable()
     {
         unLitMaterial = GetComponent<MeshRenderer>().material;
-        objectToBeActivated.OnActivation += ObjectToBeActivated_OnActivation;
+        objectToBeActivatedNew.OnActivation += ObjectToBeActivated_OnActivation;
     }
 
     private void OnDisable()
     {
-        objectToBeActivated.OnActivation -= ObjectToBeActivated_OnActivation;
+        objectToBeActivatedNew.OnActivation -= ObjectToBeActivated_OnActivation;
 
     }
 
-    private void ObjectToBeActivated_OnActivation(float howLong)
+    private void ObjectToBeActivated_OnActivation()
     {
         if(!isMakingButtonLitRoutineRunning)
-            StartCoroutine(MakebuttonLit(howLong));
+            StartCoroutine(MakebuttonLit(ActivationDuration));
     }
 
 

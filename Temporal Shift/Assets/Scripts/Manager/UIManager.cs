@@ -12,7 +12,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
 
 
+    [SerializeField] private GameObject HealthParent;
+
+
     public static UIManager Instance;
+
+    private int lastDeactivatedChildIndex = -1;
+
 
     private void Start()
     {
@@ -38,10 +44,13 @@ public class UIManager : MonoBehaviour
         TimeRewindController.OnAbleToRewindObjectUI += TimeRewindController_OnShowHoldUI;
 
         PlayerHealth.OnHit += PlayerHealth_OnHit;
+        PlayerHealth.OnDeath += PlayerHealth_OnDeath;
+
         
+
     }
 
-    
+
 
     private void OnDisable()
     {
@@ -53,13 +62,50 @@ public class UIManager : MonoBehaviour
         TimeRewindController.OnAbleToRewindObjectUI -= TimeRewindController_OnShowHoldUI;
 
         PlayerHealth.OnHit -= PlayerHealth_OnHit;
+        PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
 
     }
 
+    private void PlayerHealth_OnDeath()
+    {
+        ResetHealthChildren();
+    }
+
+    private void ResetHealthChildren()
+    {
+        Transform healthParentTransform = HealthParent.transform;
+
+        for (int i = 0; i < healthParentTransform.childCount; i++)
+        {
+            Transform child = healthParentTransform.GetChild(i);
+            child.gameObject.SetActive(true);
+        }
+    }
     private void PlayerHealth_OnHit()
     {
+
+
+        DeactivateNextChild();
         canvasGroup.alpha = 1f;
         StartCoroutine(FadeBloodOut());
+        
+    }
+
+    private void DeactivateNextChild()
+    {
+        Transform healthParentTransform = HealthParent.transform;
+
+        if (lastDeactivatedChildIndex < healthParentTransform.childCount - 1)
+        {
+            lastDeactivatedChildIndex++;
+            Transform child = healthParentTransform.GetChild(lastDeactivatedChildIndex);
+            child.gameObject.SetActive(false);
+        }
+        else
+        {
+            // All children are deactivated, reset the index
+            lastDeactivatedChildIndex = -1;
+        }
     }
 
     private IEnumerator FadeBloodOut()
