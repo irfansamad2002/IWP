@@ -6,6 +6,11 @@ public class HideMouseOnFocus : MonoBehaviour
 {
     private bool isCursorVisible = false;
 
+    private void Start()
+    {
+        HideCursor();
+    }
+
     private void OnApplicationFocus(bool focus)
     {
         SetCursorState();

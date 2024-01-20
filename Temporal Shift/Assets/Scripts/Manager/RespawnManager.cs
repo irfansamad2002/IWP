@@ -6,16 +6,13 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
 
-    GameObject player;
+    [SerializeField] GameObject player;
 
     private CheckPoint latestActivatedCheckpoint;
 
     public Transform defaultRespawnLocation;
 
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+   
 
     private void OnEnable()
     {
