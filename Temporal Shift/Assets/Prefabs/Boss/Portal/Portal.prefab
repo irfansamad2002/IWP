@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2647762675812296093}
+  - component: {fileID: 344423716059475089}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -26,13 +27,27 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -50.684826, y: -11.0625, z: 371.3589}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.28, y: 3.28, z: 3.28}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 458297829631903401}
   - {fileID: 2608886217824156890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344423716059475089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208040535082795516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a69ceb89be2e8841a64c95a65815472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PortalEffectGo: {fileID: 1725823102736324628}
+  allTheGenerators: []
 --- !u!1 &1725823102736324628
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,12 +60,12 @@ GameObject:
   - component: {fileID: 2712035235064740725}
   - component: {fileID: 234208245240115815}
   m_Layer: 0
-  m_Name: Cylinder.008
+  m_Name: Portal Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &458297829631903401
 Transform:
   m_ObjectHideFlags: 0
