@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserAimByRay : LightningBoltScript
+public class LaserAimByRay : MonoBehaviour
 {
+    [SerializeField] float DebugLineLength = 20f;
+    LightningBoltScript daDefaultScript;
 
-    //LineRenderer lineRenderer;
     private Vector3 hitPosition;
 
-    [SerializeField] float DebugLineLength = 20f;
+
 
     private void OnEnable()
     {
-        //lineRenderer = GetComponent<LineRenderer>();
-        //lineRenderer.positionCount = 2;
-        
+        daDefaultScript = GetComponent<LightningBoltScript>();
     }
 
     private void Update()
@@ -24,18 +23,16 @@ public class LaserAimByRay : LightningBoltScript
         if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ~layerMask))
         {
             hitPosition = hit.point;
-            //lineRenderer.SetPosition(0, transform.position);
-            //lineRenderer.SetPosition(1, hitPosition);
-            base.StartPosition = transform.position;
-            base.EndPosition = hitPosition;
+            daDefaultScript.StartPosition = transform.position;
+            daDefaultScript.EndPosition = hitPosition;
+
         }
         else
         {
             hitPosition = hit.point;
-            //lineRenderer.SetPosition(0, transform.position);
-            //lineRenderer.SetPosition(1, transform.position + (transform.forward * DebugLineLength));
-            base.StartPosition = transform.position;
-            base.EndPosition = transform.position + (transform.forward * DebugLineLength);
+            daDefaultScript.StartPosition = transform.position;
+            daDefaultScript.EndPosition = transform.position + (transform.forward * DebugLineLength);
+
         }
     }
 
