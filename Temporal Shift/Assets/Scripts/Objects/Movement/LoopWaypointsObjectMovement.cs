@@ -118,9 +118,10 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
 
     private void OnDrawGizmos()
     {
+        
         Gizmos.color = Color.yellow;
 
-        if (Waypoints == null)
+        if (Waypoints[0] == null)
             return;
 
         for (int i = 0; i < Waypoints.Length - 1; i++)

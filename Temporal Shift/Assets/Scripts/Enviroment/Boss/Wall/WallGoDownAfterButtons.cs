@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class WallGoDownAfterButtons : MonoBehaviour
 {
-    private Vector3 initialPosition;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float goDownHowFar = 5f;
 
-    public float goDownForHowLong = 2f;
+    public float goDownDuration = 2f;
 
     ActivateByMultipleButtonsEvent theEventForMulti;
+    Vector3 initialPosition;
+    Vector3 targetPosition;
     bool isOn;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class WallGoDownAfterButtons : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+        targetPosition = initialPosition;
     }
 
     private void OnEnable()
@@ -38,17 +40,40 @@ public class WallGoDownAfterButtons : MonoBehaviour
     {
         if (!isOn)
         {
+            Debug.Log("Test");
             StartCoroutine(ActivateUpAndDown());
         }
     }
 
     private IEnumerator ActivateUpAndDown()
     {
-        GoDown();
-        yield return new WaitForSeconds(goDownForHowLong);
-        GoUp();
+        isOn = true;
+        yield return new WaitForSeconds(goDownDuration);
+        isOn = false;
     }
 
+
+    private IEnumerator MoveDown()
+    {
+        while (transform.position.y > initialPosition.y - goDownHowFar) // Adjust the threshold for when it's considered "down"
+        {
+            Debug.Log("go down test " + moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        Debug.Log("what is over here");
+    }
+
+    private IEnumerator MoveUp()
+    {
+        while (transform.position.y < initialPosition.y)
+        {
+            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        isOn = false;
+    }
     [ContextMenu("GoDown")]
     public void GoDown()
     {
@@ -61,22 +86,21 @@ public class WallGoDownAfterButtons : MonoBehaviour
 
     }
 
-    private IEnumerator MoveDown()
+    private void Update()
     {
-        while (transform.position.y > initialPosition.y - goDownHowFar) // Adjust the threshold for when it's considered "down"
+        if (isOn)
         {
-            transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
-            yield return null;
+            //transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+            targetPosition = initialPosition - new Vector3(0f, goDownHowFar, 0f);
         }
-    }
+        else
+        {
+            targetPosition = initialPosition;
 
-    private IEnumerator MoveUp()
-    {
-        while (transform.position.y < initialPosition.y)
-        {
-            transform.Translate(Vector3.up * moveSpeed * Time.deltaTime);
-            yield return null;
         }
-        isOn = false;
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+        //Utils.ClampVector3(transform.position, new Vector3(transform.position.x, transform.position.y + goDownHowFar, transform.position.z), initialPosition);
+
     }
 }
