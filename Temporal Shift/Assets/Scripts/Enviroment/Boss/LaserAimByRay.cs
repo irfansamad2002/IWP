@@ -10,7 +10,7 @@ public class LaserAimByRay : MonoBehaviour
     LightningBoltScript daDefaultScript;
 
     private Vector3 hitPosition;
-
+    private bool hitPlayer;
 
 
     private void OnEnable()
@@ -20,17 +20,29 @@ public class LaserAimByRay : MonoBehaviour
 
     private void Update()
     {
+        //if(Physics.cast)
         
-        if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ~ignoreColliders))
+        if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ignoreColliders))
         {
+            //Debug.Log(hit.collider.name);
+           
             ChargingEmmision hitGenerator = hit.collider.gameObject.GetComponent<ChargingEmmision>();
            if (hitGenerator != null)
            {
                 hitGenerator.Charge();
            }
 
+            IHitable iHitable = hit.collider.gameObject.GetComponent<IHitable>();
+
+            if (iHitable != null && !hitPlayer)
+            {
+
+                hitPlayer = true;
+                StartCoroutine(playerGetHitRoutine(iHitable));
+            }
 
 
+           
 
             hitPosition = hit.point;
             daDefaultScript.StartPosition = transform.position;
@@ -44,6 +56,13 @@ public class LaserAimByRay : MonoBehaviour
             daDefaultScript.EndPosition = transform.position + (transform.forward * DebugLineLength);
 
         }
+    }
+
+    IEnumerator playerGetHitRoutine(IHitable iHitable)
+    {
+        iHitable.Hit();
+        yield return new WaitForSeconds(1f);
+        hitPlayer = false;
     }
 
     private void OnDrawGizmos()

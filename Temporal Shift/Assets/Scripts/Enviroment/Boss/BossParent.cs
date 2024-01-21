@@ -8,6 +8,20 @@ public class BossParent : MonoBehaviour
 
     private RotateObject currentRewindingObject;
 
+    [SerializeField] SpawnWall AtkPatternA;
+    [SerializeField] SpawnWall AtkPatternB;
+    [SerializeField] float attackCooldown = 10f;
+
+    
+    public bool isStillAttacking = true;
+
+    
+
+    private void Start()
+    {
+        //StartCoroutine(AttackSequence());
+    }
+
     private void OnEnable()
     {
         RotateObject.OnRewindStarted += RotateObject_OnRewindStarted;
@@ -42,6 +56,38 @@ public class BossParent : MonoBehaviour
         {
             currentRewindingObject = null;
         }
+    }
+
+  
+
+    IEnumerator AttackSequence()
+    {
+        while (isStillAttacking) // Infinite loop for continuous attacks
+        {
+            AtkPatternA.AtkStart();
+
+            // Wait for some time
+            yield return new WaitForSeconds(attackCooldown); // Adjust the time as needed
+
+            AtkPatternB.AtkStart();
+
+            // Wait for some time before repeating the sequence
+            yield return new WaitForSeconds(attackCooldown); // Adjust the time as needed
+        }
+    }
+
+    [ContextMenu("Start boss atk")]
+    public void StartBossAttack()
+    {
+        isStillAttacking = true;
+        StartCoroutine(AttackSequence());
+
+    }
+
+    [ContextMenu("Stop boss atk")]
+    public void StopBossAttack()
+    {
+        isStillAttacking = false;
     }
 
 }
