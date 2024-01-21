@@ -6,6 +6,7 @@ using UnityEngine;
 public class LaserAimByRay : MonoBehaviour
 {
     [SerializeField] float DebugLineLength = 20f;
+    [SerializeField] LayerMask ignoreColliders;
     LightningBoltScript daDefaultScript;
 
     private Vector3 hitPosition;
@@ -19,8 +20,8 @@ public class LaserAimByRay : MonoBehaviour
 
     private void Update()
     {
-        int layerMask = ~LayerMask.GetMask("PressERange");  // Exclude the layer of your button
-        if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ~layerMask))
+        
+        if (Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, ~ignoreColliders))
         {
             ChargingEmmision hitGenerator = hit.collider.gameObject.GetComponent<ChargingEmmision>();
            if (hitGenerator != null)
