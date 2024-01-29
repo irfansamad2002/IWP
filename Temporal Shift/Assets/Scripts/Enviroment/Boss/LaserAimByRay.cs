@@ -10,7 +10,7 @@ public class LaserAimByRay : MonoBehaviour
     LightningBoltScript daDefaultScript;
 
     private Vector3 hitPosition;
-    private bool hitPlayer;
+    private bool hitPlayer;   
 
 
     private void OnEnable()
