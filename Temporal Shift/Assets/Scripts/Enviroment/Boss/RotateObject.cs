@@ -3,19 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateObject : MonoBehaviour, IRewindTimeable
+public class RotateObject : MonoBehaviour, IRewindTimeable, IStopTimeable
 {
     public float RotateSpeed = 35f;
 
     private int direction = 1;
 
     private bool isRewinding;
+    private float orignalRotateSpeed;
 
     [SerializeField] TimeRewindController controller;
     public static event Action<RotateObject> OnRewindStarted;
     public static event Action<RotateObject> OnRewindStopped;
 
-    // Update is called once per frame
+
+    private void Start()
+    {
+        orignalRotateSpeed = RotateSpeed;
+    }
+
     void Update()
     {
         Rotate();
@@ -54,5 +60,13 @@ public class RotateObject : MonoBehaviour, IRewindTimeable
 
     }
 
-  
+    public void StopMoving()
+    {
+        RotateSpeed = 0;
+    }
+
+    public void StartMoving()
+    {
+        RotateSpeed = orignalRotateSpeed;
+    }
 }
