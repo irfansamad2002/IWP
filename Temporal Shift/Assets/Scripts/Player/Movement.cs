@@ -11,9 +11,11 @@ public class Movement : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private float movementSpeed = 6f;
+    [SerializeField] private float sprintSpeed = 10f;
     [SerializeField] private float acceleration = 10f;
 
     private float _speed;
+    private bool isSprinting;
     [HideInInspector]
     public JumpAndGravity jumpAndGravity;
 
@@ -30,13 +32,22 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         inputReader.MoveEvent += UpdateInputDirection;
+        inputReader.SprintEvent += InputReader_SprintEvent;
     }
+
 
     private void OnDestroy()
     {
         inputReader.MoveEvent -= UpdateInputDirection;
+        inputReader.SprintEvent -= InputReader_SprintEvent;
 
     }
+
+    private void InputReader_SprintEvent(bool state)
+    {
+        isSprinting = state;
+    }
+
 
     private void UpdateInputDirection(Vector2 input)
     {
@@ -52,8 +63,8 @@ public class Movement : MonoBehaviour
 
     private void Move()
     {
-        //float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-        float targetSpeed = movementSpeed;
+        float targetSpeed = isSprinting ? sprintSpeed: movementSpeed;
+        //float targetSpeed = movementSpeed;
 
         if (_inputDirection == Vector2.zero) targetSpeed = 0.0f;
 

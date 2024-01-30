@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action<Vector2> MoveEvent;
     public event Action JumpEvent;
+    public event Action<bool> SprintEvent;
     public event Action<bool> AbilityEvent;
     public event Action<bool> RewindEvent;
     public event Action<bool> SpeedWallEvent;
@@ -133,6 +134,18 @@ public class InputReader : ScriptableObject, IPlayerActions
         else if (context.canceled)
         {
             SpeedWallEvent?.Invoke(false);
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SprintEvent?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            SprintEvent?.Invoke(false);
         }
     }
 }
