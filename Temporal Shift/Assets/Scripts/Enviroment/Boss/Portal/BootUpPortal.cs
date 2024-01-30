@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BootUpPortal : MonoBehaviour
 {
+    public static event Action onPortalOpenEvent;
     [SerializeField] GameObject PortalEffectGo;
     [SerializeField] BoxCollider boxColliderGo;
     [SerializeField] List<ChargingEmmision> allTheGenerators = new List<ChargingEmmision>();
@@ -38,7 +41,7 @@ public class BootUpPortal : MonoBehaviour
         PortalEffectGo.SetActive(true);
         stopChecking = true;
         boxColliderGo.enabled = true;
-
+        onPortalOpenEvent?.Invoke();
 
     }
 
@@ -69,6 +72,7 @@ public class BootUpPortal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("END GAME");
+            SceneManager.LoadScene(2);
 
         }
     }
