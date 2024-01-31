@@ -16,13 +16,13 @@ public class RespawnManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnDeath += PlayerHealth_OnDeath;
+        //PlayerHealth.OnDeath += PlayerHealth_OnDeath;
         CheckPoint.OnLatestCheckpointTouch += CheckPoint_OnLatestCheckpointTouch;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
+        //PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
         CheckPoint.OnLatestCheckpointTouch -= CheckPoint_OnLatestCheckpointTouch;
     }
 
@@ -37,14 +37,16 @@ public class RespawnManager : MonoBehaviour
 
     private void PlayerHealth_OnDeath()
     {
-        if (latestActivatedCheckpoint == null)
-        {
-            RespawnPlayer(defaultRespawnLocation);
-        }
-        else
-        {
-            RespawnPlayer(latestActivatedCheckpoint.playerRespawnLocation);
-        }
+        //if (latestActivatedCheckpoint == null)
+        //{
+        //    RespawnPlayer(defaultRespawnLocation);
+        //}
+        //else
+        //{
+        //    RespawnPlayer(latestActivatedCheckpoint.playerRespawnLocation);
+        //}
+
+
     }
 
     private void CheckPoint_OnLatestCheckpointTouch(CheckPoint checkpoint)

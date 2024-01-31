@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class CheckPointUI : MonoBehaviour
 {
     [SerializeField] GameObject theUIGO;
+    [SerializeField] RectTransform rectTransform;
 
     float OriginalHeight;
-    RectTransform rectTransform;
     Vector2 closeRect;
     float lerpDuration = 2;
     CheckPoint toCheckIfSameCheckpoint;
 
     private void Start()
     {
-        rectTransform = gameObject.GetComponent<RectTransform>();
         OriginalHeight = rectTransform.rect.height;
         closeRect.Set(rectTransform.sizeDelta.x, 0f);
+        rectTransform.sizeDelta = closeRect;
+
     }
     private void OnEnable()
     {
@@ -53,7 +54,7 @@ public class CheckPointUI : MonoBehaviour
         while (timeElapsed <= lerpDuration)
         {
             rectTransform.sizeDelta = Vector2.Lerp(rectTransform.sizeDelta, closeRect, timeElapsed / lerpDuration);
-            timeElapsed += Time.deltaTime;
+            timeElapsed += Time.unscaledDeltaTime;
             yield return null;
         }
         rectTransform.sizeDelta = closeRect;

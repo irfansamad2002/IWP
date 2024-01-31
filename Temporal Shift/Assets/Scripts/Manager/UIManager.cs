@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text leftClickUI;
@@ -13,6 +16,9 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private GameObject HealthParent;
+    [SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private HideMouseOnFocus hideMouseOnFocus;
+    [SerializeField] private Transform defaultLocaltionForMouse;
 
 
     public static UIManager Instance;
@@ -68,8 +74,22 @@ public class UIManager : MonoBehaviour
 
     private void PlayerHealth_OnDeath()
     {
-        ResetHealthChildren();
+        //ShowGameOverOption
+        GameOverScreen.SetActive(true);
+
+        //Stop World Time
+        Time.timeScale = 0f;
+
+        //Enable Mouse
+        hideMouseOnFocus.ShowCursor();
+
+
     }
+
+   
+    #region player On Death
+
+
 
     private void ResetHealthChildren()
     {
@@ -81,6 +101,8 @@ public class UIManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
+    #endregion
+
     private void PlayerHealth_OnHit()
     {
 

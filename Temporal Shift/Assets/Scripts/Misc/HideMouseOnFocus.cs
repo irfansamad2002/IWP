@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class HideMouseOnFocus : MonoBehaviour
 {
     private bool isCursorVisible = false;
+    [SerializeField] private Transform defaultLocaltionForMouse;
 
     private void Start()
     {

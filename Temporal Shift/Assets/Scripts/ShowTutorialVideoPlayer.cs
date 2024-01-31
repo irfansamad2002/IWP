@@ -21,7 +21,7 @@ public class ShowTutorialVideoPlayer : MonoBehaviour
     [ContextMenu("PlayTheVideo")]
     public void PlayVideo()
     {
-        hideMouse.ShowCursor();
+        //hideMouse.ShowCursor();
 
         //Stop player from looking around
         playerGameObject.GetComponent<LookAroundWithMouse>().enabled = false;
