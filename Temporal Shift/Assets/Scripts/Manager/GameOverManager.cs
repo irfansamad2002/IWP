@@ -22,6 +22,12 @@ public class GameOverManager : MonoBehaviour
         focus.ShowCursor();
 
     }
+
+    private void Update()
+    {
+        focus.ShowCursor();
+
+    }
     public void OnExitButton()
     {
         SceneManager.LoadScene(0);
