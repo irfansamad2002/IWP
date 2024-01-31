@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private HideMouseOnFocus hideMouseOnFocus;
     [SerializeField] private Transform defaultLocaltionForMouse;
 
+    [SerializeField] Volume postProcessingVolume;
 
     public static UIManager Instance;
 
@@ -52,11 +54,11 @@ public class UIManager : MonoBehaviour
         PlayerHealth.OnHit += PlayerHealth_OnHit;
         PlayerHealth.OnDeath += PlayerHealth_OnDeath;
 
-        
+        RespawnManager.OnRespawnEvent += RespawnManager_OnRespawnEvent;
 
     }
 
-
+    
 
     private void OnDisable()
     {
@@ -70,6 +72,21 @@ public class UIManager : MonoBehaviour
         PlayerHealth.OnHit -= PlayerHealth_OnHit;
         PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
 
+        RespawnManager.OnRespawnEvent -= RespawnManager_OnRespawnEvent;
+
+    }
+
+    #region player On Death
+
+    private void RespawnManager_OnRespawnEvent()
+    {
+        GameOverScreen.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        hideMouseOnFocus.HideCursor();
+
+        MakeBackgroundUnBlur();
     }
 
     private void PlayerHealth_OnDeath()
@@ -83,11 +100,21 @@ public class UIManager : MonoBehaviour
         //Enable Mouse
         hideMouseOnFocus.ShowCursor();
 
-
+        MakeBackgroundBlur();
     }
 
-   
-    #region player On Death
+    [ContextMenu("blur")]
+    private void MakeBackgroundBlur()
+    {
+        postProcessingVolume.profile.components[3].active = true;
+    }
+
+    [ContextMenu("unblur")]
+    private void MakeBackgroundUnBlur()
+    {
+        postProcessingVolume.profile.components[3].active = false;
+    }
+
 
 
 
