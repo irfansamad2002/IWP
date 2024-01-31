@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         jumpAndGravity = GetComponent<JumpAndGravity>();
+        
     }
 
     private void Awake()

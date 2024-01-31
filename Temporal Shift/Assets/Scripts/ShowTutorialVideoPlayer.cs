@@ -25,7 +25,7 @@ public class ShowTutorialVideoPlayer : MonoBehaviour
 
         //Stop player from looking around
         playerGameObject.GetComponent<LookAroundWithMouse>().enabled = false;
-        screenGameObject.GetComponent<SetTutorialInfo>().TutorialText.text = instruction;
+        //screenGameObject.GetComponent<SetTutorialInfo>().TutorialText.text = instruction;
         //screenGameObject.GetComponentInChildren<Button>().GetComponentInChildren<TMP_Text>().text = "Skip";
         screenGameObject.SetActive(true);
         timeMultiplier = 0f;

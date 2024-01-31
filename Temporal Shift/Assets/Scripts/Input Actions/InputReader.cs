@@ -20,6 +20,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<bool> Weapon2Event;
     public event Action<bool> Weapon3Event;
 
+    public static event Action OnSkipEvent;
+
     public Vector2 AimPosition { get; private set; }
 
     public bool JumpState { get; private set; }
@@ -109,7 +111,10 @@ public class InputReader : ScriptableObject, IPlayerActions
         if (context.performed)
         {
             JumpEvent?.Invoke();
+            OnSkipEvent?.Invoke();
         }
+
+
 
     }
 
