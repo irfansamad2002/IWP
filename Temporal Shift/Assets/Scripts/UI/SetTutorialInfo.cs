@@ -66,6 +66,7 @@ public class SetTutorialInfo : MonoBehaviour
         PreventPlayerControls();
         PlayTheVideo();
         Debug.Log(videoDuration);
+        CancelInvoke();
         Invoke(nameof(BackToNormal), videoDuration);
 
     }

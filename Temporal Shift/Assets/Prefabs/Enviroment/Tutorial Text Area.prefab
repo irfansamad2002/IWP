@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2737948841491390977}
   - component: {fileID: 2742102770425373914}
   - component: {fileID: 6691761540275749210}
+  - component: {fileID: 8456075277962500383}
   m_Layer: 0
   m_Name: Tutorial Text Area
   m_TagString: Untagged
@@ -67,3 +68,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 2742102770425373914}
+--- !u!114 &8456075277962500383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893026867759547735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f9f9f01be385d49926b942816e6edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setTutorialInfo: {fileID: 0}
+  headerText: Freeze Orb La sia
+  bodyText: U smack here what u want
+  selector: 0
