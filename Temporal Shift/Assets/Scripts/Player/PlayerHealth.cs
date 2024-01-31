@@ -17,6 +17,20 @@ public class PlayerHealth : MonoBehaviour, IHitable
         currentHealth = Maxhealth;
     }
 
+    private void OnEnable()
+    {
+        RespawnManager.OnRespawnEvent += RespawnManager_OnRespawnEvent;
+
+    }
+
+    
+
+    private void OnDisable()
+    {
+        RespawnManager.OnRespawnEvent -= RespawnManager_OnRespawnEvent;
+
+    }
+
     public void Hit()
     {
         currentHealth--;
@@ -45,8 +59,15 @@ public class PlayerHealth : MonoBehaviour, IHitable
     public void KillPlayer()
     {
         Debug.Log("player died");
+        GetComponent<LookAroundWithMouse>().enabled = false;
         OnDeath?.Invoke();
         currentHealth = Maxhealth;
+
+    }
+
+    private void RespawnManager_OnRespawnEvent()
+    {
+        GetComponent<LookAroundWithMouse>().enabled = true;
 
     }
 }

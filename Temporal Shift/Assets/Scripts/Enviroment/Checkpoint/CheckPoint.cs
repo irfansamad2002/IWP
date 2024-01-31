@@ -28,7 +28,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (playerHitCollider != null)
         {
-            Gizmos.color = new Color(0,1,0,0.1f);
+            Gizmos.color = new Color(0,0.5f,0,0.05f);
             Gizmos.DrawCube(playerHitCollider.bounds.center, playerHitCollider.size);
         }
 

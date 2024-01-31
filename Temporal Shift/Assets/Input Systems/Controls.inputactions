@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "64987112-3da2-4ed9-b927-e621663fec5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Ability",
                     "type": "Button",
                     "id": "cbf08a00-a608-4206-a29c-142605f36a8f",
@@ -248,6 +257,17 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Speedwall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19ddb5da-f72a-4d21-9f84-7c56c2b14f05",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

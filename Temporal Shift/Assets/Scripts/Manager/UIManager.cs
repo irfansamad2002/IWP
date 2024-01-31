@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
+
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text leftClickUI;
@@ -13,7 +17,11 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private GameObject HealthParent;
+    [SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private HideMouseOnFocus hideMouseOnFocus;
+    [SerializeField] private Transform defaultLocaltionForMouse;
 
+    [SerializeField] Volume postProcessingVolume;
 
     public static UIManager Instance;
 
@@ -46,11 +54,11 @@ public class UIManager : MonoBehaviour
         PlayerHealth.OnHit += PlayerHealth_OnHit;
         PlayerHealth.OnDeath += PlayerHealth_OnDeath;
 
-        
+        RespawnManager.OnRespawnEvent += RespawnManager_OnRespawnEvent;
 
     }
 
-
+    
 
     private void OnDisable()
     {
@@ -64,12 +72,51 @@ public class UIManager : MonoBehaviour
         PlayerHealth.OnHit -= PlayerHealth_OnHit;
         PlayerHealth.OnDeath -= PlayerHealth_OnDeath;
 
+        RespawnManager.OnRespawnEvent -= RespawnManager_OnRespawnEvent;
+
+    }
+
+    #region player On Death
+
+    private void RespawnManager_OnRespawnEvent()
+    {
+        GameOverScreen.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        hideMouseOnFocus.HideCursor();
+
+        MakeBackgroundUnBlur();
     }
 
     private void PlayerHealth_OnDeath()
     {
-        ResetHealthChildren();
+        //ShowGameOverOption
+        GameOverScreen.SetActive(true);
+
+        //Stop World Time
+        Time.timeScale = 0f;
+
+        //Enable Mouse
+        hideMouseOnFocus.ShowCursor();
+
+        MakeBackgroundBlur();
     }
+
+    [ContextMenu("blur")]
+    private void MakeBackgroundBlur()
+    {
+        postProcessingVolume.profile.components[3].active = true;
+    }
+
+    [ContextMenu("unblur")]
+    private void MakeBackgroundUnBlur()
+    {
+        postProcessingVolume.profile.components[3].active = false;
+    }
+
+
+
 
     private void ResetHealthChildren()
     {
@@ -81,6 +128,8 @@ public class UIManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
+    #endregion
+
     private void PlayerHealth_OnHit()
     {
 

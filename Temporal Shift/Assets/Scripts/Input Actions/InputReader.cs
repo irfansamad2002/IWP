@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, IPlayerActions
 {
     public event Action<Vector2> MoveEvent;
     public event Action JumpEvent;
+    public event Action<bool> SprintEvent;
     public event Action<bool> AbilityEvent;
     public event Action<bool> RewindEvent;
     public event Action<bool> SpeedWallEvent;
@@ -18,6 +19,8 @@ public class InputReader : ScriptableObject, IPlayerActions
     public event Action<bool> Weapon1Event;
     public event Action<bool> Weapon2Event;
     public event Action<bool> Weapon3Event;
+
+    public static event Action OnSkipEvent;
 
     public Vector2 AimPosition { get; private set; }
 
@@ -108,7 +111,10 @@ public class InputReader : ScriptableObject, IPlayerActions
         if (context.performed)
         {
             JumpEvent?.Invoke();
+            OnSkipEvent?.Invoke();
         }
+
+
 
     }
 
@@ -133,6 +139,18 @@ public class InputReader : ScriptableObject, IPlayerActions
         else if (context.canceled)
         {
             SpeedWallEvent?.Invoke(false);
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            SprintEvent?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            SprintEvent?.Invoke(false);
         }
     }
 }
