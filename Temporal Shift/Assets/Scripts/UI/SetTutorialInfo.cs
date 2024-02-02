@@ -66,8 +66,10 @@ public class SetTutorialInfo : MonoBehaviour
         PreventPlayerControls();
         PlayTheVideo();
         Debug.Log(videoDuration);
-        CancelInvoke();
-        Invoke(nameof(BackToNormal), videoDuration);
+        //CancelInvoke();
+        StopCoroutine(BackToNormalRoutine(videoDuration));
+        StartCoroutine(BackToNormalRoutine(videoDuration));
+        //Invoke(nameof(BackToNormal), videoDuration);
 
     }
     [ContextMenu("blur")]
@@ -106,6 +108,14 @@ public class SetTutorialInfo : MonoBehaviour
 
     private void BackToNormal()
     {
+        CloseTheTutorialGameObject();
+        ResumePlayerControls();
+        UnBlur();
+    }
+
+    IEnumerator BackToNormalRoutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         CloseTheTutorialGameObject();
         ResumePlayerControls();
         UnBlur();

@@ -70,4 +70,12 @@ public class RespawnManager : MonoBehaviour
 
     }
 
+    public void SpawnPlayerAtSpecificLocation(Transform transform)
+    {
+        Debug.Log("RESPAWN AT" + transform);
+        player.GetComponent<Movement>().enabled = false;
+        player.transform.position = transform.position;
+        Invoke("makePlayerMOVELASIAL", 0.1f);
+    }
+
 }

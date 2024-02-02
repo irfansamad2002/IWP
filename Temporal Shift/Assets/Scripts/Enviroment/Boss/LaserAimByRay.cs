@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class LaserAimByRay : MonoBehaviour
 {
     [SerializeField] float DebugLineLength = 20f;
@@ -16,7 +17,21 @@ public class LaserAimByRay : MonoBehaviour
     private void OnEnable()
     {
         daDefaultScript = GetComponent<LightningBoltScript>();
+        BootUpPortal.onPortalOpenEvent += BootUpPortal_onPortalOpenEvent;
     }
+
+   
+    private void OnDisable()
+    {
+        BootUpPortal.onPortalOpenEvent -= BootUpPortal_onPortalOpenEvent;
+
+    }
+
+    private void BootUpPortal_onPortalOpenEvent()
+    {
+        daDefaultScript.enabled = false;
+    }
+
 
     private void Update()
     {
