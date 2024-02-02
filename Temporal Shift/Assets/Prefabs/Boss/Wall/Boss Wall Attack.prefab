@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallMovementSpeed: 4
-  wallHeight: 40
+  wallHeight: 80
   getReadySpeed: 1
-  wallLifetime: 4
+  wallLifetime: 8

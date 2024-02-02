@@ -36,7 +36,7 @@ public class BootUpPortal : MonoBehaviour
 
    
     [ContextMenu("Turn the portal on")]
-    void TurnOn()
+    public void TurnOn()
     {
         PortalEffectGo.SetActive(true);
         stopChecking = true;

@@ -5,35 +5,41 @@ using UnityEngine;
 
 public class BossParent : MonoBehaviour
 {
+    public static event Action OnPhaseTwoEvent;
 
     private RotateObject currentRewindingObject;
 
     [SerializeField] SpawnWall AtkPatternA;
     [SerializeField] SpawnWall AtkPatternB;
     [SerializeField] float attackCooldown = 10f;
-
+    [SerializeField] List<GameObject> turrets = new List<GameObject>();
     
     public bool isStillAttacking = true;
 
-    
+    bool checkedForPhaseTwo;
+    int amountOfTurrets;
 
     private void Start()
     {
-        //StartCoroutine(AttackSequence());
+        amountOfTurrets = turrets.Count;
     }
 
     private void OnEnable()
     {
         RotateObject.OnRewindStarted += RotateObject_OnRewindStarted;
         RotateObject.OnRewindStopped += RotateObject_OnRewindStopped;
+        OnPhaseTwoEvent += BossParent_OnPhaseTwoEvent;
+        BootUpPortal.onPortalOpenEvent += BootUpPortal_onPortalOpenEvent;
     }
 
-   
-
+  
     private void OnDisable()
     {
         RotateObject.OnRewindStarted -= RotateObject_OnRewindStarted;
         RotateObject.OnRewindStopped -= RotateObject_OnRewindStopped;
+        OnPhaseTwoEvent -= BossParent_OnPhaseTwoEvent;
+
+        BootUpPortal.onPortalOpenEvent -= BootUpPortal_onPortalOpenEvent;
     }
 
 
@@ -89,5 +95,32 @@ public class BossParent : MonoBehaviour
     {
         isStillAttacking = false;
     }
+
+    private void BossParent_OnPhaseTwoEvent()
+    {
+        StartBossAttack();
+    }
+
+    public void TurretDestroyed()
+    {
+        amountOfTurrets--;
+        Debug.Log(amountOfTurrets);
+        if (amountOfTurrets <= 0)
+        {
+            OnPhaseTwoEvent?.Invoke();
+        }
+        //
+    }
+
+    public void ForcePhaseTwo()
+    {
+        OnPhaseTwoEvent?.Invoke();
+    }
+
+    private void BootUpPortal_onPortalOpenEvent()
+    {
+        StopBossAttack();
+    }
+
 
 }

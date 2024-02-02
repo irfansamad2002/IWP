@@ -125,6 +125,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InGameMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""463a0446-7240-4e63-bb71-565c52c4ec1d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13c9b727-287d-4dc9-b080-d3ca6528a198"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""InGameMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -328,6 +348,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Weapon2 = m_Player.FindAction("Weapon2", throwIfNotFound: true);
         m_Player_Weapon3 = m_Player.FindAction("Weapon3", throwIfNotFound: true);
         m_Player_Speedwall = m_Player.FindAction("Speedwall", throwIfNotFound: true);
+        m_Player_InGameMenu = m_Player.FindAction("InGameMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -400,6 +421,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Weapon2;
     private readonly InputAction m_Player_Weapon3;
     private readonly InputAction m_Player_Speedwall;
+    private readonly InputAction m_Player_InGameMenu;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -415,6 +437,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Weapon2 => m_Wrapper.m_Player_Weapon2;
         public InputAction @Weapon3 => m_Wrapper.m_Player_Weapon3;
         public InputAction @Speedwall => m_Wrapper.m_Player_Speedwall;
+        public InputAction @InGameMenu => m_Wrapper.m_Player_InGameMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +480,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Speedwall.started += instance.OnSpeedwall;
             @Speedwall.performed += instance.OnSpeedwall;
             @Speedwall.canceled += instance.OnSpeedwall;
+            @InGameMenu.started += instance.OnInGameMenu;
+            @InGameMenu.performed += instance.OnInGameMenu;
+            @InGameMenu.canceled += instance.OnInGameMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -494,6 +520,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Speedwall.started -= instance.OnSpeedwall;
             @Speedwall.performed -= instance.OnSpeedwall;
             @Speedwall.canceled -= instance.OnSpeedwall;
+            @InGameMenu.started -= instance.OnInGameMenu;
+            @InGameMenu.performed -= instance.OnInGameMenu;
+            @InGameMenu.canceled -= instance.OnInGameMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -533,5 +562,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnWeapon2(InputAction.CallbackContext context);
         void OnWeapon3(InputAction.CallbackContext context);
         void OnSpeedwall(InputAction.CallbackContext context);
+        void OnInGameMenu(InputAction.CallbackContext context);
     }
 }

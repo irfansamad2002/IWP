@@ -23,9 +23,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Volume postProcessingVolume;
 
+    [SerializeField] private GameObject inGameMenuGO;
+
     public static UIManager Instance;
 
     private int lastDeactivatedChildIndex = -1;
+
+    [SerializeField] HideMouseOnFocus hideMouse;
 
 
     private void Start()
@@ -56,10 +60,11 @@ public class UIManager : MonoBehaviour
 
         RespawnManager.OnRespawnEvent += RespawnManager_OnRespawnEvent;
 
+        InputReader.InGameMenuEvent += InputReader_InGameMenuEvent;
+
     }
 
-    
-
+   
     private void OnDisable()
     {
         FreezeTime.OnSpawnFreezeOrb -= FreezeTime_OnSpawnFreezeOrb;
@@ -74,7 +79,33 @@ public class UIManager : MonoBehaviour
 
         RespawnManager.OnRespawnEvent -= RespawnManager_OnRespawnEvent;
 
+        InputReader.InGameMenuEvent -= InputReader_InGameMenuEvent;
     }
+
+    private void InputReader_InGameMenuEvent()
+    {
+        inGameMenuGO.SetActive(true);
+        hideMouse.ShowCursor();
+
+        // Stop World Time
+        Time.timeScale = 0f;
+
+        MakeBackgroundBlur();
+
+    }
+
+    public void CloseInGameMenu()
+    {
+        inGameMenuGO.SetActive(false);
+        hideMouse.HideCursor();
+
+        // Stop World Time
+        Time.timeScale = 1f;
+
+        MakeBackgroundUnBlur();
+
+    }
+
 
     #region player On Death
 

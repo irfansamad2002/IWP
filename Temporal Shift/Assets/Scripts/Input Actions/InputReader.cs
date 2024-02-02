@@ -22,6 +22,8 @@ public class InputReader : ScriptableObject, IPlayerActions
 
     public static event Action OnSkipEvent;
 
+    public static event Action InGameMenuEvent;
+
     public Vector2 AimPosition { get; private set; }
 
     public bool JumpState { get; private set; }
@@ -151,6 +153,15 @@ public class InputReader : ScriptableObject, IPlayerActions
         else if (context.canceled)
         {
             SprintEvent?.Invoke(false);
+        }
+    }
+
+    public void OnInGameMenu(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //JumpEvent?.Invoke();
+            InGameMenuEvent?.Invoke();
         }
     }
 }
