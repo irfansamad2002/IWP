@@ -118,12 +118,20 @@ public class UIManager : MonoBehaviour
         hideMouseOnFocus.HideCursor();
 
         MakeBackgroundUnBlur();
+
+        ResetHealthChildren();
+
+
     }
 
     private void PlayerHealth_OnDeath()
     {
         //ShowGameOverOption
         GameOverScreen.SetActive(true);
+
+        StopCoroutine(FadeBloodOut());
+        canvasGroup.alpha = 0f;
+
 
         //Stop World Time
         Time.timeScale = 0f;
@@ -132,6 +140,7 @@ public class UIManager : MonoBehaviour
         hideMouseOnFocus.ShowCursor();
 
         MakeBackgroundBlur();
+
     }
 
     [ContextMenu("blur")]
@@ -167,6 +176,8 @@ public class UIManager : MonoBehaviour
 
         DeactivateNextChild();
         canvasGroup.alpha = 1f;
+        StopCoroutine(FadeBloodOut());
+
         StartCoroutine(FadeBloodOut());
         
     }
@@ -196,7 +207,7 @@ public class UIManager : MonoBehaviour
         while (elapsedTime < fadeDuration)
         {
             canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
         canvasGroup.alpha = 0f; 
