@@ -7,6 +7,7 @@ public class CheatCode : MonoBehaviour
     [SerializeField] BossParent bossParent;
     [SerializeField] BootUpPortal portal;
     [SerializeField] RespawnManager respawnManager;
+    public bool ForcePlayerSpawnAtStart;
 
     public List<Transform> checkpointPositions = new List<Transform>();
 
@@ -14,7 +15,8 @@ public class CheatCode : MonoBehaviour
 
     private void Start()
     {
-        respawnManager.SpawnPlayerAtSpecificLocation(checkpointPositions[0]);
+        if(ForcePlayerSpawnAtStart)
+            respawnManager.SpawnPlayerAtSpecificLocation(checkpointPositions[0]);
     }
 
     [ContextMenu("SkipToPhaseTwo")]
