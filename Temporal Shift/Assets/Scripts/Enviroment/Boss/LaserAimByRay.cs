@@ -8,28 +8,34 @@ public class LaserAimByRay : MonoBehaviour
 {
     [SerializeField] float DebugLineLength = 20f;
     [SerializeField] LayerMask ignoreColliders;
+    
     LightningBoltScript daDefaultScript;
+    AudioSource audioSource;
 
     private Vector3 hitPosition;
-    private bool hitPlayer;   
+    private bool hitPlayer;
 
-
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
         daDefaultScript = GetComponent<LightningBoltScript>();
         BootUpPortal.onPortalOpenEvent += BootUpPortal_onPortalOpenEvent;
+        audioSource.Play();
     }
 
    
     private void OnDisable()
     {
         BootUpPortal.onPortalOpenEvent -= BootUpPortal_onPortalOpenEvent;
-
     }
 
     private void BootUpPortal_onPortalOpenEvent()
     {
         daDefaultScript.enabled = false;
+        this.enabled = false;
     }
 
 

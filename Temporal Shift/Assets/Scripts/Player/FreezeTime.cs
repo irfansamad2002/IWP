@@ -32,6 +32,10 @@ public class FreezeTime : MonoBehaviour
 
     private void HandleEvent(bool state)
     {
+        if (UIManager.Instance.isPausing)
+            return;
+
+        
         if (state)
         {
             if (!AbleToShoot)
@@ -47,5 +51,5 @@ public class FreezeTime : MonoBehaviour
         }
     }
 
-   
+  
 }

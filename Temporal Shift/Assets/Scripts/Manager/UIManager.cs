@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] HideMouseOnFocus hideMouse;
 
+    public bool isPausing;
+
 
     private void Start()
     {
@@ -82,6 +84,7 @@ public class UIManager : MonoBehaviour
         InputReader.InGameMenuEvent -= InputReader_InGameMenuEvent;
     }
 
+    #region inGameMenu
     private void InputReader_InGameMenuEvent()
     {
         inGameMenuGO.SetActive(true);
@@ -91,6 +94,8 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
 
         MakeBackgroundBlur();
+
+        isPausing = true;
 
     }
 
@@ -104,8 +109,10 @@ public class UIManager : MonoBehaviour
 
         MakeBackgroundUnBlur();
 
+        isPausing = false;
     }
 
+    #endregion
 
     #region player On Death
 

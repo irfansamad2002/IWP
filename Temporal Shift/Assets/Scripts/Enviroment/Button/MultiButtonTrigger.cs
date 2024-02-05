@@ -17,10 +17,15 @@ public class MultiButtonTrigger : MonoBehaviour, IHitable, IInteractable
     [SerializeField] ActivateByMultipleButtonsEvent objectToBeActivatedNew;
 
     Material unLitMaterial;
+    AudioSource audioSource;
     private bool isPressed;
 
     private bool isMakingButtonLitRoutineRunning = false;
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
         unLitMaterial = GetComponent<MeshRenderer>().material;
@@ -63,9 +68,11 @@ public class MultiButtonTrigger : MonoBehaviour, IHitable, IInteractable
         isPressed = true;
         meshRenderer.material = pendingMaterial;
         CancelInvoke("ResetButton");
-        Invoke("ResetButton", ActivationDuration); 
+        Invoke("ResetButton", ActivationDuration);
+        audioSource.Play();
 
-       
+
+
     }
 
     private void ResetButton()

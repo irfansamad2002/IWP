@@ -6,10 +6,13 @@ using UnityEngine;
 [SelectionBase]
 public class ChargingEmmision : MonoBehaviour
 {
+    public event Action onChargeEvent;
+    public event Action onUnchargeEvent;
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] float maxEmission = 500f;
     [SerializeField] float lerpSpeed = 2f;
     [SerializeField] float afterSomeTimeStopChargeDuration = 1f;
+    public Light genLight;
 
     private bool isCharge;
     private float litEmission = 1f;
@@ -18,11 +21,15 @@ public class ChargingEmmision : MonoBehaviour
     private float targetEmission;
     private float currentEmission;
 
+    bool checkedCharge, checkedUnCharge;
+
+
     private void Start()
     {
         // Initialize target and current emission to the default value
         targetEmission = 1f;
         currentEmission = 1f;
+        genLight.enabled = false;
     }
 
     [ContextMenu("Charged")]
@@ -33,7 +40,7 @@ public class ChargingEmmision : MonoBehaviour
 
         // Set the target emission to the maximum value when charged
         targetEmission = maxEmission;
-
+        genLight.enabled = true;
         Invoke(nameof(StopCharge), afterSomeTimeStopChargeDuration);
     }
 
@@ -43,6 +50,8 @@ public class ChargingEmmision : MonoBehaviour
         isCharge = false;
 
         targetEmission = 1f;
+        genLight.enabled = false;
+
     }
 
 
@@ -55,6 +64,22 @@ public class ChargingEmmision : MonoBehaviour
         Color finalColor = generatorColor * Mathf.LinearToGammaSpace(currentEmission);
 
         meshRenderer.material.SetColor("_EmissionColor", finalColor);
+
+        if (isCharge && !checkedCharge)
+        {
+            onChargeEvent?.Invoke();
+            checkedCharge = true;
+            checkedUnCharge = false;
+        }
+
+        if (!isCharge && !checkedUnCharge)
+        {
+            onUnchargeEvent?.Invoke();
+
+
+            checkedUnCharge = true;
+            checkedCharge = false;
+        }
     }
 
     public bool IsCharged()

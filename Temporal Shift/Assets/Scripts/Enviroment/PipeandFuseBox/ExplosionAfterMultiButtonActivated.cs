@@ -6,7 +6,12 @@ public class ExplosionAfterMultiButtonActivated : MonoBehaviour
 {
     [SerializeField] ActivateByMultipleButtonsEvent buttonsEvent;
     [SerializeField] GameObject FX;
+    AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnEnable()
     {
         buttonsEvent.OnActivation += ButtonsEvent_OnActivation;
@@ -15,6 +20,7 @@ public class ExplosionAfterMultiButtonActivated : MonoBehaviour
     private void ButtonsEvent_OnActivation()
     {
         Instantiate(FX, gameObject.transform);
+        audioSource.Play();
     }
 
     private void OnDisable()

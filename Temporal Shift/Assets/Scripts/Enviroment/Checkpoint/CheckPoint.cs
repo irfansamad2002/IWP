@@ -11,16 +11,27 @@ public class CheckPoint : MonoBehaviour
     public Transform playerRespawnLocation;
     [SerializeField] private BoxCollider playerHitCollider;
 
+    AudioSource audioSource;
+
+    bool playedSoundOnce;
     private void Awake()
     {
         playerHitCollider = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();   
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
             return;
         OnLatestCheckpointTouch?.Invoke(this);
+
+        if (!playedSoundOnce)
+        {
+            audioSource.Play();
+            playedSoundOnce = true;
+        }
     }
 
 

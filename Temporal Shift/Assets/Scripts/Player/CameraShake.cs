@@ -2,15 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using System;
+
 public class CameraShake : MonoBehaviour
 {
     [SerializeField] CinemachineImpulseSource cinemachineImpulseSource;
-
- 
+    bool isMakingScreenShake;
     private void OnEnable()
     {
         BootUpPortal.onPortalOpenEvent += BootUpPortal_onPortalOpenEvent;
+        BossParent.OnPhaseTwoEvent += BossParent_OnPhaseTwoEvent;
     }
+
+   
+    private void OnDisable()
+    {
+        BootUpPortal.onPortalOpenEvent -= BootUpPortal_onPortalOpenEvent;
+        BossParent.OnPhaseTwoEvent -= BossParent_OnPhaseTwoEvent;
+    }
+
+    private void BossParent_OnPhaseTwoEvent()
+    {
+        ShakeScreenForHowLong(5f);
+    }
+
+
     [ContextMenu("SHAKE")]
     private void BootUpPortal_onPortalOpenEvent()
     {
@@ -49,9 +65,23 @@ public class CameraShake : MonoBehaviour
         yield return new WaitForSeconds(.5f);
     }
 
-    private void OnDisable()
+
+    public void ShakeScreenForHowLong(float duration)
     {
-        BootUpPortal.onPortalOpenEvent -= BootUpPortal_onPortalOpenEvent;
+        StartCoroutine(AllowScreenShakeRoutine(duration));
+    }
+
+    IEnumerator AllowScreenShakeRoutine(float duration)
+    {
+        isMakingScreenShake = true;
+        yield return new WaitForSeconds(duration);
+        isMakingScreenShake = false;
+    }
+
+    private void Update()
+    {
+        if(isMakingScreenShake)
+            cinemachineImpulseSource.GenerateImpulseWithForce(UnityEngine.Random.Range(.1f, 1.0f));
 
     }
 }

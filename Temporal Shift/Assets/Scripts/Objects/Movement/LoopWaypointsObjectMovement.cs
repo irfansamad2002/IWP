@@ -21,8 +21,7 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     [Header("For External Motion")]
     public Vector3 DirectionToWaypoint;
 
-    private bool delayedBeforeTurn;
-    //[SerializeField] private float delayDuration = 1f;
+    [SerializeField] private float delayDuration = 2f;
 
     private void Awake()
     {
@@ -33,7 +32,6 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
     private void Start()
     {
         defaultSpeed = speed;
-        delayedBeforeTurn = true;
 
     }
 
@@ -45,10 +43,9 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
         if (!isMoving)
             return;
         
-        //if (delayedBeforeTurn)
-        //{
-            MoveThisObject();
-        //}
+
+        MoveThisObject();
+
 
 
     }
@@ -72,23 +69,17 @@ public class LoopWaypointsObjectMovement : MonoBehaviour, IStopTimeable, ISpeedT
         {
             
             currrentWaypoint++;
-            StartCoroutine(delayCoroutine(1f));
             // If the platform reaches the end of the waypoint list, loop back to the first waypoint
             if (currrentWaypoint >= Waypoints.Length)
             {
                 currrentWaypoint = 0;
             }
+            StopMoving();
+            Invoke(nameof(StartMoving), delayDuration);
         }
     }
 
-    private IEnumerator delayCoroutine(float duration)
-    {
-
-        delayedBeforeTurn = false;
-        yield return new WaitForSeconds(duration);
-        delayedBeforeTurn = true;
-    }
-
+    
     public void StopMoving()
     {
         isMoving = false;

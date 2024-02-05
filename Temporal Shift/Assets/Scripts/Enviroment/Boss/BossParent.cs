@@ -13,11 +13,12 @@ public class BossParent : MonoBehaviour
     [SerializeField] SpawnWall AtkPatternB;
     [SerializeField] float attackCooldown = 10f;
     [SerializeField] List<GameObject> turrets = new List<GameObject>();
-    
+    [SerializeField] AudioSource audioSource;
     public bool isStillAttacking = true;
 
     bool checkedForPhaseTwo;
     int amountOfTurrets;
+
 
     private void Start()
     {
@@ -98,6 +99,7 @@ public class BossParent : MonoBehaviour
 
     private void BossParent_OnPhaseTwoEvent()
     {
+        audioSource.Play();
         StartBossAttack();
     }
 

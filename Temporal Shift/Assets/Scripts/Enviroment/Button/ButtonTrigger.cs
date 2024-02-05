@@ -16,6 +16,13 @@ public class ButtonTrigger : MonoBehaviour, IHitable, IInteractable
     
     public List<GameObject> objectsActivatedByButton = new List<GameObject>();
 
+    AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
         unLitMaterial = GetComponent<MeshRenderer>().material;
@@ -37,6 +44,7 @@ public class ButtonTrigger : MonoBehaviour, IHitable, IInteractable
 
     private void OnInteracted()
     {
+        audioSource.Play();
         StartCoroutine(LitButtonEnumerator(ActivationDuration));
         foreach (GameObject eachObjectToActivate in objectsActivatedByButton)
         {
@@ -47,6 +55,8 @@ public class ButtonTrigger : MonoBehaviour, IHitable, IInteractable
                 activateViaButton.Activate(ActivationDuration);
             }
         }
+
+
     }
 
     private IEnumerator LitButtonEnumerator(float howLong)

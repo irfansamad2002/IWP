@@ -22,14 +22,18 @@ public class ChangeTextColor : MonoBehaviour
 
     public void ChangeToHoverColor()
     {
-        tmpText.color = hoverColorText;
-        buttonImage.color = hoverColorButton;
+        if(tmpText)
+            tmpText.color = hoverColorText;
+        if(buttonImage)
+            buttonImage.color = hoverColorButton;
     }
 
     public void BackToOrignalColor()
     {
-        tmpText.color = orignalColorText;
-        buttonImage.color = orignalColorButton;
+        if(tmpText)
+            tmpText.color = orignalColorText;
+        if(buttonImage)
+            buttonImage.color = orignalColorButton;
     }
 
 }
